@@ -1,11 +1,11 @@
 {
-  "name": "second_todo",
+  "name": "e-commerce",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "type": "module",
-  "scripts": {
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node app.js",
+  "scripts": { 
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

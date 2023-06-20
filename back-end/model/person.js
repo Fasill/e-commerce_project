@@ -29,8 +29,8 @@ const personSchema = new Schema({
     postalCode: String,
     country: String,
     dateOfBirth:  Date,
-    phoneNumber: number,
-    required: true,
+    phoneNumber: Number,
+    
    },
    username: {
     type: String,
