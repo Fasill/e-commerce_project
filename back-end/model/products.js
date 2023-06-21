@@ -5,12 +5,27 @@ const Schema = mongoose.Schema;
 const ProductSchema = new Schema({
   seller: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Person",
+    ref: "personSchema",
     required: true,
   },
   name: {
     type: String,
     required: true,
+  },
+  image:{
+    filename:{
+      type: String,
+      required:true,},
+    originalname:{
+      type: String,
+      required:true,},
+    mimetype: {
+      type: String,
+      required:true,},
+    size: {
+      type: Number,
+      required:true,},
+    
   },
   description: {
     type: String,
@@ -36,10 +51,7 @@ const ProductSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
-  image: {
-    data: Buffer,
-    contentType: String,
-  },
+
 });
 
 export default mongoose.model("Product", ProductSchema);
