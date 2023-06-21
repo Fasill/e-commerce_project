@@ -1,5 +1,6 @@
 import personSchema from "../model/person.js";
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcryptjs';
 
 //generating token
 const maxAge = 3*24*60*60;
@@ -23,12 +24,14 @@ export const signup = async (req, res) => {
 
       if (!user) {
         console.log("Creating a new customer...");
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         const customer = new personSchema({
           name,
           email,
           type,
           username,
-          password,
+          password:hashedPassword,
           agreedToTerms,
         });
 
@@ -115,6 +118,20 @@ export const additionalForms = async (req, res) => {
   }catch(e){console.log(e)}
 };
 
-const seller = async (req, res) => {
-  // Function implementation for seller (if any)
-};
+export const signin =async(req,res)=>{
+  const {email,password} = req.body;
+  let user;
+  try{
+    user = await personSchema.findOne({email})
+    if (!user){
+      res.json({message:"user notfound"})
+    }
+    console.log(user.password)
+    const isPasswordCorrect = bcrypt.compareSync(password,user.password);
+    if (!isPasswordCorrect){
+      return res.status(400).json({message:"Incorrect password"})
+    }
+    const token = createToken(user._id);
+    res.json({message:"all good", token:token,type:user.type})
+  }catch(e){console.log(e)}
+}
