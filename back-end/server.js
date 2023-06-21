@@ -7,7 +7,7 @@ import productRouter from './router/productRouter.js';
 const app = express();
 
 // app.use(express.urlencoded({ extended: true }));
-app.use(express.text());
+app.use(express.json());
 
 
 app.use('/',userRouter);

@@ -40,9 +40,14 @@ const ProductSchema = new Schema({
     required: true,
   },
   category: {
-    type: Number,
+    type: String,
     required: true,
   },
+  tag:[
+    {
+      type: String,
+    }
+  ],
   isAvailable: {
     type: Boolean,
     default: true,
