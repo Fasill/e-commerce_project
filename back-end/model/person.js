@@ -75,7 +75,19 @@ const personSchema = new Schema({
     type:String
   },
 
-
+  cart: [
+    {
+      productId: {
+        type: Schema.Types.ObjectId, // Assuming you are using MongoDB's ObjectId for product references
+        ref: 'ProductSchema',
+      },
+      quantity: {
+        type: Number,
+        default: 1,
+      },
+      // Additional cart item properties as needed
+    }
+  ],
 });
 
 export default mongoose.model('PersonSchema', personSchema);

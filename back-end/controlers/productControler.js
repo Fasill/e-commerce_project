@@ -1,7 +1,9 @@
 import ProductSchema from '../model/products.js'
+import personSchema from "../model/person.js";
+
 import jwt from 'jsonwebtoken'
 
-export const traverse = async (req, res) => {
+export const allTraverse = async (req, res) => {
   try {
     const products = await ProductSchema.find(); // Retrieve all products from the database
     
@@ -14,6 +16,20 @@ export const traverse = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+export const cartTraverse = async(req,res)=>{
+  const token = req.body.token;
+  console.log(req.body);
+  const decodedToken = jwt.decode(token);
+  const id = decodedToken.id;
+
+  try{
+    const person = await personSchema.findById(id);
+    const cart = person.cart;
+    const productId = await ProductSchema.findById(cart.productId);
+    res.status(200).json({allcart:productId});
+  }catch(e){console.log(e)};
+
+}
 
 
 export const creatAProduct =async (req,res)=>{

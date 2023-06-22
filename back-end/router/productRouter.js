@@ -1,12 +1,15 @@
 import express from "express";
-import {traverse,creatAProduct,search} from '../controlers/productControler.js'
+import {allTraverse,creatAProduct,search,cartTraverse} from '../controlers/productControler.js'
 import {upload} from '../middleware/multer.js'
 
 const productRouter = express.Router();
 
+productRouter.get('/cart',cartTraverse);
+productRouter.get('/',allTraverse);
+productRouter.post('/add',allTraverse);
+productRouter.delete('/remove/:id',allTraverse);
+productRouter.put('/update/;id',allTraverse);
 
-productRouter.get('/',traverse);
-//this is for searching 
 productRouter.post('/',search);
 productRouter.post('/create',upload.array('images'),creatAProduct);
 
