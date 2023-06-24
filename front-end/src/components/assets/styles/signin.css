@@ -20,17 +20,19 @@
 .form-card form{
   display: grid;
   background-color: silver;
-  gap:3rem;
-  margin-top: 6rem;
+  gap:1.2rem;
+  margin-top: 3rem;
   margin-left: 28rem;
   z-index: 9999;
   padding: 2rem;
+  padding-bottom: 4rem;
   opacity: 0.6;
   border-radius: 2.5rem; 
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 30px 30px 30px rgba(0, 0, 0, 0.8);
 
 }
 .form-input{
+  
   border:none;
   border-bottom: 1px solid black;
   outline: none;
@@ -39,6 +41,11 @@
   height: 2rem;
   background-color: silver;
 
+}
+.allinputs{
+  margin-top: 3rem;
+  display: grid;
+  gap:1.2rem;
 }
 .submit-btn{
   margin-right:5rem;
@@ -50,6 +57,21 @@
   font-size: 1rem;
   color: white;
   opacity: 1;
+
+}
+.error-msg1,.error-msg2{
+  color:#A51910;
+  margin:0;
+  margin-top:-1.0rem;
+  font-size:0.8rem;
+
+}
+.error-msg1{
+  margin-left:-11rem;
+
+}
+.error-msg2{
+  margin-left:-5.6rem;
 
 }
 .submit-btn ::-ms-value{

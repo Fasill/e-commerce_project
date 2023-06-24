@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import express from "express";
 import userRouter from './router/userRouter.js'
 import productRouter from './router/productRouter.js';
+import cors from "cors";
 
 
 const app = express();
@@ -9,6 +10,7 @@ const app = express();
 // app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(cors());
 
 app.use('/',userRouter);
 app.use('/products',productRouter)
