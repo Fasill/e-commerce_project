@@ -130,24 +130,18 @@ export const removeFromCart = async(req,res)=>{
   console.log("token decoded")
   const id = decodedToken.id;
   console.log(id);
-
-
   
     try {
-      // Find the user by their ID
       const user = await personSchema.findById(id);
   
-      // Find the index of the cart item with the specified product ID
       const cartIndex = user.cart.findIndex(item => item.productId.toString() === productId);
   
       if (cartIndex === -1) {
         return res.status(404).json({ message: 'Cart item not found.' });
       }
   
-      // Remove the cart item from the user's cart
       user.cart.splice(cartIndex, 1);
   
-      // Save the updated user object
       await user.save();
   
       res.status(200).json({ message: 'Cart item deleted successfully.' });
@@ -162,5 +156,6 @@ export const removeFromCart = async(req,res)=>{
   
 
 export const updateCart = async(req,res)=>{
+
 
 }

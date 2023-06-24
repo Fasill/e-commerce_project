@@ -1,0 +1,58 @@
+main{
+  display: flex;
+  gap: 8em;
+  margin-top:6rem;
+  /* background-color: #A51910; */
+  position: relative;  
+}
+.left-col{
+  margin-top: 8rem;
+
+}
+.left-col h1{
+  
+    font-size:41px;
+    font-weight: normal;
+    margin: 0;
+  
+}
+.left-col p{
+  font-size:17px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+}
+.cta-btns {
+  margin: 5em 0;
+  /* display: flex; */
+  gap: 2em;
+  
+}
+.primary-cta{
+  background-color: #A51910;
+  font-size: 1.2em;
+  color: white;
+  text-decoration: none;
+  border-radius: 1.9em;
+  padding: 0.5em ;
+} 
+.rigt-col{
+  margin-top: 4rem;
+  margin-right:5rem;
+}
+
+
+.background-container {
+  position: absolute;
+  top: -4rem;
+  left: -1rem;
+  
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+
+
