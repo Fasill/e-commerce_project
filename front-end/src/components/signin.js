@@ -61,7 +61,7 @@ export const Signin = ()=>{
           <form onSubmit={handleSubmit(onSubmit)}>
           <ul className='LS'>
           <li><a href="/signin" >Login</a></li>          
-        <li><a href="/signin">signup</a></li>   
+        <li><a href="/signup">signup</a></li>   
         </ul>
         <div className='allinputs'>
             <input 

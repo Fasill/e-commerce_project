@@ -39,9 +39,9 @@
   padding: 0;
   width: 18rem;
   height: 2rem;
-  background-color: silver;
-
+  background-color: silver ;
 }
+
 .allinputs{
   margin-top: 3rem;
   display: grid;
@@ -79,10 +79,28 @@
 }
 .form-card ::placeholder{
   position: relative;
-  top: px;
   font-size: 12px;
   color: black;
   font-weight: bold;
+}
+select{
+  border:none;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0;
+  width: 18rem;
+  height: 2rem;
+  background-color: silver ; 
+}
+label{
+  display: flex;
+  gap: 1rem;
+}
+.checkbox{
+  background-color: silver ; 
+  padding: 0;
+  border:none;
+
 }
 
 .background_img {
@@ -90,4 +108,7 @@
   top: -4rem;
   left: -1rem;
   z-index: -1;
+  position: fixed;
+
 }
+

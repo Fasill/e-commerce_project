@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+.sign{
+  z-index: 9999;
+
+}
