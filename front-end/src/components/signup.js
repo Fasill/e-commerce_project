@@ -3,6 +3,8 @@ import { useState } from 'react'
 import {useForm} from 'react-hook-form';
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-dom';
+
 
 
 import axios from 'axios'
@@ -11,6 +13,8 @@ import BackgroundSVG from './assets/images/signup_backround.svg'
 
 import { Navbar } from './navbar'
 export const Signup = ()=>{
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [type, setType] = useState('customer');
@@ -44,8 +48,15 @@ export const Signup = ()=>{
     .post('http://localhost:8080/signup',data)
     .then((res)=>{
       if (data.type ==="customer"){
-        
+        navigate('/signup/customer');
+        localStorage.setItem('token',res.data.token);
       }
+      else if (data.type ==="seller"){
+        navigate('/signup/seller');
+        localStorage.setItem('token',res.data.token);
+      }
+
+
 
     })   
     setEmail('')
@@ -120,29 +131,12 @@ export const Signup = ()=>{
           
           {/*type oprtion*/}
             
-              <select>
-                <option
-                value={type}
-                {...register('type')}
-                  onChange={(e) => setType(e.target.value)}
+          <select value={type}  {...register("type")} onChange={(e) => setType(e.target.value)}>
+            <option value="customer">customer</option>
+            <option value="admin">admin</option>
+            <option value="seller">seller</option>
+          </select>
 
-                >
-                  customer</option>
-                <option
-                value={type}
-                {...register('type')}
-                onChange={(e) => setType(e.target.value)}
-
-                >
-                  admin</option>
-                <option
-                value={type}
-                {...register('type')}
-                onChange={(e) => setType(e.target.value)}
-
-                >
-                  seller</option>
-              </select>
               <p className='error-msg2'>{errors.type?.message}</p>
 
 

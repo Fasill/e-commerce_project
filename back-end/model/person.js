@@ -42,7 +42,7 @@ const personSchema = new Schema({
     required: true,
   },
   paymentInformation: {
-    enum: ['Bank Of Abyssinia ', 'CBE', 'telebirr'],
+    enumBanks: ['Bank Of Abyssinia ', 'CBE', 'telebirr'],
     accountNumber:Number,
 
   },

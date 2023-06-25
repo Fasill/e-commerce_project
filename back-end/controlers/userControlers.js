@@ -69,21 +69,21 @@ export const additionalForms = async (req, res) => {
 
     if (user){
       if (user.type === 'customer'){
-        const{paymentInformation} = req.body;
+        const{enumBanks,accountNumber} = req.body;
         user.paymentInformation = {
-        enum : paymentInformation.enum,
-        accountNumber : paymentInformation.accountNumber
+        enumBanks : enumBanks,
+        accountNumber : accountNumber
       }
       await user.save();
       res.json({message:"customer accountNumber information submitted"})
     
     }else if(user.type === 'seller'){
 
-      const{paymentInformation,company,businessAddress} = req.body;
+      const{enumBanks,accountNumber,company,businessAddress} = req.body;
 
       user.paymentInformation = {
-      enum : paymentInformation.enum,
-      accountNumber : paymentInformation.accountNumber
+      enumBanks : enumBanks,
+      accountNumber : accountNumber
       }
     
       user.company = company;
@@ -102,7 +102,7 @@ export const additionalForms = async (req, res) => {
         const{paymentInformation,referralSource,  perferences,communicationPreferences} = req.body;
       
         user.paymentInformation = {
-        enum : paymentInformation.enum,
+        enumBanks : paymentInformation.enumBanks,
         accountNumber : paymentInformation.accountNumber
       }
       user.referralSource = referralSource;
