@@ -27,6 +27,7 @@ export const Navbar = ()=>{
             onChange={handleInputChange}
             placeholder= "search products" 
             className="search-input"
+            
           />
         </form>
       </li>

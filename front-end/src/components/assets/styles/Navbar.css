@@ -53,14 +53,23 @@ nav ul li a.active:before {
 }
 
 .search-input {
-  
+  background-color: transparent;
+  border: none;
+  color: #ffffff; 
   padding: 9px;
   padding-right: 4rem;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 50px;
   margin-top: -0.25rem;
   /* height:10rem; */
-  background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  outline: none;
+  caret-color: rgb(87, 79, 79);
+  transition: background-color 0.4s;
 }
 
+.search-input:hover{
+  /* background-color: grey; */
+  /* opacity: 1px; */
+  background-color: rgba(0, 0, 0, 0.02);
+} 
