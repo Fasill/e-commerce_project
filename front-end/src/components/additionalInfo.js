@@ -1,3 +1,4 @@
+import React,{useEffect} from 'react';
 import './assets/styles/signin.css'
 import { useState } from 'react'
 import {useForm} from 'react-hook-form';
@@ -13,6 +14,7 @@ import BackgroundSVG from './assets/images/signup_backround.svg'
 
 import { Navbar } from './navbar'
 export const Customer = ()=>{
+
   const navigate = useNavigate();
 
   const [enumBanks,setEnumBanks ] = useState('Bank Of Abyssinia');
@@ -35,10 +37,31 @@ export const Customer = ()=>{
   });
 
 
-
+    useEffect(() => {
+      const token = localStorage.getItem('auth');
+      console.log("rendering");
+      if (!token) {
+        navigate('/login');
+      } else {
+        axios.get('http://localhost:8080/verify', {
+          headers: {
+            token:token
+          }
+        })
+          .then(response => {
+            // Token is verified, continue with protected content
+            console.log(response.data);
+          })
+          .catch(error => {
+            // Token is invalid or expired, redirect to login
+            navigate('/login');
+          });
+      }
+    }, [navigate]);
 
 
   const onSubmit = (data) => {
+
     // data.agreedToTerms = true
     const token = localStorage.getItem('token');
     data.token = token
@@ -164,6 +187,32 @@ export const Seller = ()=>{
   const{register, handleSubmit, formState:{errors}} = useForm({
     resolver:yupResolver(schema)
   });
+
+      useEffect(() => {
+        const token = localStorage.getItem('auth');
+        console.log("rendering");
+        if (!token) {
+          navigate('/login');
+        } else {
+          axios.get('http://localhost:8080/verify', {
+            headers: {
+              token:token
+            }
+          })
+            .then(response => {
+              // Token is verified, continue with protected content
+              console.log(response.data);
+            })
+            .catch(error => {
+              // Token is invalid or expired, redirect to login
+              navigate('/login');
+            });
+        }
+      }, [navigate]);
+
+
+
+
 
   const onSubmit = (data) => {
     const businessAddress = {

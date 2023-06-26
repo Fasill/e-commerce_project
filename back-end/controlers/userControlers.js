@@ -1,5 +1,5 @@
 import personSchema from "../model/person.js";
-import jwt from 'jsonwebtoken'
+import jwt, { verify } from 'jsonwebtoken'
 import bcrypt from 'bcryptjs';
 
 //generating token
@@ -134,4 +134,7 @@ export const signin =async(req,res)=>{
     const token = createToken(user._id);
     res.json({message:"all good", token:token,type:user.type})
   }catch(e){console.log(e)}
+}
+export const verifyToken = (req,res)=>{
+  req.message("all good")
 }
