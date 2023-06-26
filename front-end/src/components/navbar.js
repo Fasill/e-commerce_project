@@ -31,7 +31,7 @@ export const Navbar = ()=>{
         </form>
       </li>
         <li><a href="/" >Home</a></li>          
-        <li><a href="/">PRODUCTS</a></li>          
+        <li><a href="/products">PRODUCTS</a></li>          
         <li><a href="/">ABOUT</a></li>          
         <li><a href="/">CONTACT</a></li>          
         <li><a href="/"><img className='cart' src={cart} alt="CART "/></a></li>          

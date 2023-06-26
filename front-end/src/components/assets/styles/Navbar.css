@@ -2,25 +2,29 @@ header{
 
   display: flex;
   gap: 18rem;
-  margin-top: -5rem;
+  margin-top: -6rem;
   justify-content: space-between;
   align-items: center;
   padding-left: 3rem;
-  border-bottom-left-radius: 2.5rem;
-  border-bottom-right-radius: 2.5rem;
+  padding-bottom: -1rem;
+
+  width: 96.8%;
+  margin-left: -1rem;
+  /* border-bottom-left-radius: 2.5rem; */
+  border-bottom-right-radius: 4rem;
   position: fixed;
   z-index: 9999;
 }
 nav{
 
-  margin:2em;
+  margin:1.5em;
 }
 nav ul{
   list-style-type: none;
   display: flex;
   gap: 1.5rem;
   margin: 0;
-  padding-right: 3rem;
+  padding-right: 1rem;
 }
 .cart{
   margin-top: -0.5rem;
