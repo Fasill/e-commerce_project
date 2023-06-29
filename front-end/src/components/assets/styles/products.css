@@ -20,7 +20,7 @@ header:hover {
   font-size: 1.6rem;
   text-align: left;
   margin-left: 1rem;
-  margin-top: 8rem;
+  margin-top: 13rem;
   font-weight: bold;
 
 }
@@ -34,22 +34,24 @@ header:hover {
 }
 .product-card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-
-  /* border: 1px solid #ccc; */
-  border-radius: 2.9rem;
-  padding: 10px;
-  /* margin: 10px; */
-  height: 16rem;
-  display: grid;
-  margin: 0px;
+  border-radius: 27px;
+  /* padding: 10px; */
+  width: 216px;
+  height: 317px;
+  margin: 0;
   transition: margin 1s;
-
-  }
-.product-image{
-    object-fit: cover;
-  width: 100%;
-  height: 100%;
+  display: grid;
 }
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  margin-bottom: -15rem;
+  margin-top: -10px;
+  border-radius:27px ;
+  position: relative;
+}
+
 .product-card:hover{
   margin: -5px;
 
@@ -58,40 +60,58 @@ header:hover {
 .products{
   /* gap:1rem; */
   /* background-color: rgb(237, 228, 217); */
-  margin-left: 12rem;
+  margin-left:20rem;
+  margin-top: 218px;
+
   width: 75rem;
   height: 70rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1rem;
+  /* grid-gap: rem; */
   /* grid-row-gap: 0rem;  */
-  grid-auto-rows: 17rem; /* Set the desired height of each row */
+  grid-auto-rows: 22rem; /* Set the desired height of each row */
   /* grid-gap: 10px */
+  gap: 1rem;
 }
-
+.cart-icon{
+  /* size:150%; */
+  width:30px;
+  /* margin-top: 10px; */
+}
 .add-to-cart-button {
   background-color: #A51910;
-  color: white;
+  /* color: white; */
   border: none;
-  padding: 10px 20px;
+  padding: 8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  /* font-size: 16px; */
   cursor: pointer;
-  /* border-radius: 5rem; */
-
+  border-radius: 50%; /* Make the button circular */
   transition: background-color 0.3s;
-  margin-top: 1rem;
-  margin-left: -0.6rem;
-  margin-right: -0.6rem;
-
-
-  border-bottom-left-radius: 2.9rem;
-  border-bottom-right-radius: 2.9rem;
-
+  margin-top: -3rem;
+  margin-left: 8rem;
+  width :30%;
+  height: 5%;
+  /* size: 10%; */
 }
+
 
 .add-to-cart-button:hover {
   background-color: #5c110b;
 }
+
+
+
+/* bootstrap  */
+.mybtn{
+  margin-top: -8rem;
+  margin-left: 10rem;
+  border-radius: 10rem;
+
+}
+
+.btn.btn-primary{
+  background-color:  #A51910;}
+ 
