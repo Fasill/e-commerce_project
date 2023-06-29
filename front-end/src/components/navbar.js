@@ -2,6 +2,7 @@ import './assets/styles/Navbar.css';
 import logo from './assets/images/logo.svg'
 import cart from './assets/images/cart.svg'
 import registerLogo from './assets/images/register.svg'
+import { useState } from 'react';
 // import searchIcon from './assets/images/searchIcon.svg'
 export const Navbar = ()=>{
   const handleSubmit  = ()=>{
@@ -13,6 +14,32 @@ export const Navbar = ()=>{
   const handleInputChange= ()=>{
 
   }
+
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   console.log("rendering");
+  //   if (!token) {
+  //     navigate('/signup');
+  //   } else {
+  //     axios.post('http://localhost:8080/verify', {
+  //       headers: {
+  //         token:token
+  //       }
+  //     })
+  //       .then(response => {
+  //         // Token is verified, continue with protected content
+  //         console.log(response.data);
+  //       })
+  //       .catch(error => {
+  //         // Token is invalid or expired, redirect to login
+  //         navigate('/signup');
+  //       });
+  //   }
+  // }, [navigate]);
+
+
+
   return(    
   <div>
   <header>

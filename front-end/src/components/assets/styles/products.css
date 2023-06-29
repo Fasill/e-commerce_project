@@ -107,11 +107,21 @@ header:hover {
 /* bootstrap  */
 .mybtn{
   margin-top: -8rem;
-  margin-left: 10rem;
+  margin-left: 10.1rem;
   border-radius: 10rem;
 
 }
 
 .btn.btn-primary{
-  background-color:  #A51910;}
- 
+  background-color:  #A51910;
+  /* border-radius: 20rem; */
+  border-radius: 1rem;
+
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
+  border: none;  
+}
+.btn.btn-primary:hover{
+  background-color:  #7f130c;
+
+}

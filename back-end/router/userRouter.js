@@ -7,6 +7,6 @@ const userRouter = express.Router();
 userRouter.post("/signup",signup)
 userRouter.post("/signup/payment",additionalForms)
 userRouter.post("/signin",signin)
-userRouter.post("/",requireAuth,verifyToken)
+userRouter.post("/verify",requireAuth,verifyToken)
 
 export default userRouter

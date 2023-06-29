@@ -49,6 +49,7 @@ export const Signup = ()=>{
     .then((res)=>{
       if (data.type ==="customer"){
         navigate('/signup/customer');
+        console.log(res.data.token)
         localStorage.setItem('token',res.data.token);
       }
       else if (data.type ==="seller"){
@@ -155,7 +156,7 @@ export const Signup = ()=>{
             </label>
             <p className='error-msg2'>{errors.agreedToTerms?.message}</p>
 
-            <input className="submit-btn" type="submit" value="LOGIN"/>
+            <input className="submit-btn" type="submit" value="SIGNUP"/>
             </div>
             
           </form>

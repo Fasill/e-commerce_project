@@ -6,9 +6,9 @@ const maxAge = 300
 // Middleware to verify token
 export const requireAuth = (req, res, next) => {
   const token = req.headers.token;
-  
+  console.log("goot",token)
   if (!token) {
-    return res.status(401).json({ message: 'No token provided' });
+    return res.json({ message: 'No token provided' });
   }
   
   jwt.verify(token, 'fasil', (err, decodedToken) => {

@@ -132,7 +132,7 @@ export const signin =async(req,res)=>{
       return res.status(400).json({message:"Incorrect password"})
     }
     const token = createToken(user._id);
-    res.json({message:"all good", token:token,type:user.type})
+    res.json({message:"loggedIn", token:token,type:user.type})
   }catch(e){console.log(e)}
 }
 export const verifyToken = (req,res)=>{

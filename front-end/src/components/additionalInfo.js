@@ -38,12 +38,12 @@ export const Customer = ()=>{
 
 
     useEffect(() => {
-      const token = localStorage.getItem('auth');
+      const token = localStorage.getItem('token');
       console.log("rendering");
       if (!token) {
-        navigate('/login');
+        navigate('/signup');
       } else {
-        axios.get('http://localhost:8080/verify', {
+        axios.post('http://localhost:8080/verify', {
           headers: {
             token:token
           }
@@ -54,7 +54,7 @@ export const Customer = ()=>{
           })
           .catch(error => {
             // Token is invalid or expired, redirect to login
-            navigate('/login');
+            navigate('/signup');
           });
       }
     }, [navigate]);
@@ -188,27 +188,28 @@ export const Seller = ()=>{
     resolver:yupResolver(schema)
   });
 
-      useEffect(() => {
-        const token = localStorage.getItem('auth');
-        console.log("rendering");
-        if (!token) {
-          navigate('/login');
-        } else {
-          axios.get('http://localhost:8080/verify', {
-            headers: {
-              token:token
-            }
+      
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      console.log("rendering");
+      if (!token) {
+        navigate('/signup');
+      } else {
+        axios.post('http://localhost:8080/verify', {
+          headers: {
+            token:token
+          }
+        })
+          .then(response => {
+            // Token is verified, continue with protected content
+            console.log(response.data);
           })
-            .then(response => {
-              // Token is verified, continue with protected content
-              console.log(response.data);
-            })
-            .catch(error => {
-              // Token is invalid or expired, redirect to login
-              navigate('/login');
-            });
-        }
-      }, [navigate]);
+          .catch(error => {
+            // Token is invalid or expired, redirect to login
+            navigate('/signup');
+          });
+      }
+    }, [navigate]);
 
 
 
