@@ -3,7 +3,7 @@ import { useState } from 'react'
 import {useForm} from 'react-hook-form';
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from 'yup';
-
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios'
 
@@ -11,6 +11,7 @@ import BackgroundSVG from './assets/images/signup_backround.svg'
 
 import { Navbar } from './navbar'
 export const Signin = ()=>{
+  const navigate = useNavigate()
   const [password,setPassword] = useState("")
   const [email, setEmail] = useState('');
 
@@ -38,8 +39,18 @@ export const Signin = ()=>{
     axios
     .post('http://localhost:8080/signin',data)
     .then((res)=>{
-      console.log(res.data)
-      console.log("logged in")
+        console.log(res.data)
+        if(res.data.message === 'loggedIn'){
+
+          navigate('/')
+          localStorage.setItem('token',res.data.token);
+
+        }
+        else{
+          navigate('/signin')
+
+          localStorage.removeItem('token');
+        }
     })   
     setEmail('')
     setPassword('')

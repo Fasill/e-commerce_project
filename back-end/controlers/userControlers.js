@@ -1,6 +1,7 @@
 import personSchema from "../model/person.js";
 import jwt, { verify } from 'jsonwebtoken'
 import bcrypt from 'bcryptjs';
+import ProductSchema from '../model/products.js'
 
 //generating token
 const maxAge = 3*24*60*60;
@@ -119,6 +120,7 @@ export const additionalForms = async (req, res) => {
 };
 
 export const signin =async(req,res)=>{
+  console.log("gootit")
   const {email,password} = req.body;
   let user;
   try{
@@ -129,7 +131,7 @@ export const signin =async(req,res)=>{
     console.log(user.password)
     const isPasswordCorrect = bcrypt.compareSync(password,user.password);
     if (!isPasswordCorrect){
-      return res.status(400).json({message:"Incorrect password"})
+      return res.json({message:"Incorrect password"})
     }
     const token = createToken(user._id);
     res.json({message:"loggedIn", token:token,type:user.type})
@@ -137,4 +139,30 @@ export const signin =async(req,res)=>{
 }
 export const verifyToken = (req,res)=>{
   req.message("all good")
+}
+
+
+export const Profile = async(req,res)=>{
+  const {token} = req.body
+  const decodedToken = jwt.decode(token);
+  const id = decodedToken.id
+
+  let user;
+  try{
+    user = await personSchema.findById({id})
+    
+    if (user.type === 'customer'){
+      res.json({name:user.name,type:user.type ,email:user.email})
+
+    }
+    else if(user.type === 'seller'){
+    const products = await ProductSchema.find({seller:id}); // Retrieve all products from the database
+
+      res.json({name:user.name,type:user.type ,email:user.email,products:products})
+
+    }
+  
+  }catch(e){
+    console.log(e)
+  }
 }

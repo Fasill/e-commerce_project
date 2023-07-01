@@ -2,9 +2,11 @@ import './assets/styles/Navbar.css';
 import logo from './assets/images/logo.svg'
 import cart from './assets/images/cart.svg'
 import registerLogo from './assets/images/register.svg'
-import { useState } from 'react';
-// import searchIcon from './assets/images/searchIcon.svg'
+import { useState,useEffect } from 'react';
+import axios from 'axios'
 export const Navbar = ()=>{
+  const [loggedIn, setLoggedIn] = useState(false);
+
   const handleSubmit  = ()=>{
 
   }
@@ -15,28 +17,29 @@ export const Navbar = ()=>{
 
   }
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    console.log("rendering");
+    if (!token) {
+      setLoggedIn(false)
+    } else {
+      axios.post('http://localhost:8080/verify', {
+        headers: {
+          token:token
+        }
+      })
+        .then(response => {
+          setLoggedIn(true)
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   console.log("rendering");
-  //   if (!token) {
-  //     navigate('/signup');
-  //   } else {
-  //     axios.post('http://localhost:8080/verify', {
-  //       headers: {
-  //         token:token
-  //       }
-  //     })
-  //       .then(response => {
-  //         // Token is verified, continue with protected content
-  //         console.log(response.data);
-  //       })
-  //       .catch(error => {
-  //         // Token is invalid or expired, redirect to login
-  //         navigate('/signup');
-  //       });
-  //   }
-  // }, [navigate]);
+          // Token is verified, continue with protected content
+          console.log(response.data);
+        })
+        .catch(error => {
+          // Token is invalid or expired, redirect to login
+          setLoggedIn(false)
+        });
+    }
+  }, []);
 
 
 
@@ -62,8 +65,11 @@ export const Navbar = ()=>{
         <li><a href="/products">PRODUCTS</a></li>          
         <li><a href="/">ABOUT</a></li>          
         <li><a href="/">CONTACT</a></li>          
-        <li><a href="/"><img className='cart' src={cart} alt="CART "/></a></li>          
-        <li><a href="/signin"><img className='regist'  src={registerLogo} alt="register"/></a></li> 
+        <li><a href="/"><img className='cart' src={cart} alt="CART "/></a></li>    
+        {loggedIn?(
+          <li><a href="/profile"><img className='regist'  src={registerLogo} alt="register"/></a></li>
+        ):<li><a href="/signin"><img className='regist'  src={registerLogo} alt="register"/></a></li>}      
+         
 
 
 
