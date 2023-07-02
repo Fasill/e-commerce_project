@@ -149,16 +149,15 @@ export const Profile = async(req,res)=>{
 
   let user;
   try{
-    user = await personSchema.findById({id})
+    user = await personSchema.findById(id)
     
     if (user.type === 'customer'){
       res.json({name:user.name,type:user.type ,email:user.email})
 
     }
     else if(user.type === 'seller'){
-    const products = await ProductSchema.find({seller:id}); // Retrieve all products from the database
 
-      res.json({name:user.name,type:user.type ,email:user.email,products:products})
+      res.json({name:user.name,type:user.type ,email:user.email})
 
     }
   

@@ -8,6 +8,7 @@ export const requireAuth = (req, res, next) => {
   const token = req.headers.token;
   console.log("goot",token)
   if (!token) {
+    console.log("token", token)
     return res.json({ message: 'No token provided' });
   }
   

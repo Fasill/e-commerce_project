@@ -65,7 +65,7 @@ export const Navbar = ()=>{
         <li><a href="/products">PRODUCTS</a></li>          
         <li><a href="/">ABOUT</a></li>          
         <li><a href="/">CONTACT</a></li>          
-        <li><a href="/"><img className='cart' src={cart} alt="CART "/></a></li>    
+        <li><a href="/cart"><img className='cart' src={cart} alt="CART "/></a></li>    
         {loggedIn?(
           <li><a href="/profile"><img className='regist'  src={registerLogo} alt="register"/></a></li>
         ):<li><a href="/signin"><img className='regist'  src={registerLogo} alt="register"/></a></li>}      

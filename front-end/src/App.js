@@ -5,6 +5,7 @@ import {Signup} from'./components/signup.js'
 import  {Customer,Seller} from './components/additionalInfo.js'
 import { Products } from './components/products.js';
 import { Profile} from './components/profile.js';
+import { Cart} from './components/cart.js';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signup/seller" element={<Seller/>} />
           <Route path="/products" element={<Products/>} />
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/cart" element={<Cart/>} />
 
         </Routes>
       </Router>

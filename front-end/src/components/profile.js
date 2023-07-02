@@ -5,15 +5,20 @@ import { useEffect,useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
 import ProfileImg from './assets/images/profileModel.svg'
+import penSvg from './assets/images/pen.svg'
+import { Link, animateScroll as scroll } from 'react-scroll';
+
 export const Profile = () => {
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
+  const [type,setType] = useState("")
 
 
   const navigate = useNavigate()
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem('token');
+      console.log(token)
       console.log("rendering");
       if (!token) {
         navigate('/signup');
@@ -23,8 +28,12 @@ export const Profile = () => {
           const response2 = axios.post('http://localhost:8080/profile', { token});
           const [result1, result2] = await Promise.all([response1, response2]);
           console.log(result1.data); // Response from the first endpoint
-          // setName
           console.log(result2.data); // Response from the second endpoint
+
+          setName(result2.data.name)
+          setEmail(result2.data.email)
+          setType(result2.data.type)
+
         } catch (error) {
           // Handle errors
           console.error(error);
@@ -41,8 +50,17 @@ export const Profile = () => {
     <div>
       <div className='background'></div>
       <Navbar className='navbar' />
-      <main>
-        
+      <main className={style.mainProfile}>
+        <div className={style.top}>
+          <div>
+            <h1>{name}</h1>
+            <p>{email} | {type}</p>
+            <Link to="section2" smooth={true} duration={500}>
+            <img src={penSvg} className={style.pen} href='/' alt='/edit'/>
+            </Link>
+          </div>
+        </div>
+        <div className={style.fill} id='section2'>
         <div className={style.left}>
              
         <div className={style.allinputs}>
@@ -103,6 +121,7 @@ export const Profile = () => {
              
           <img src={ProfileImg} alt='profile'/>
             
+        </div>
         </div>
       </main>
       <div>

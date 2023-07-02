@@ -1,3 +1,10 @@
+.mainProfile{
+  display: grid;
+}
+.fill{
+  /* background-color: #A51910; */
+  display: flex;
+}
 .left{
   margin-left: 210px;
   height: 444px;
@@ -8,6 +15,7 @@
 
 .right{
   margin-top:4rem;
+  margin-left: 9rem;
 
 }
 .allinputs{
@@ -80,4 +88,34 @@ margin-left: 16rem;
   width: 100%;
   height: 2px;
   background-color: red;
+}
+.top{
+  content: "";
+
+  background-color: rgb(161, 160, 160);
+  padding-left: 10rem;
+  width: 85rem;
+  height: 25rem;
+  margin-top: -10rem;
+}
+
+.top h1{
+  font-size: 4rem;
+  text-align: left;
+  margin-top: 13rem;
+
+}
+.top p{
+  margin-left: 1rem;
+
+  text-align: left;
+  /* margin-top: 13rem; */
+
+  font-size: 1.2rem;
+
+}
+.pen{
+  margin-left:50rem;
+  margin-top: -12rem;
+  transform: scale(2);
 }
