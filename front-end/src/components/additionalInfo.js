@@ -239,6 +239,8 @@ export const Seller = ()=>{
       .post('http://localhost:8080/signup/payment', user)
       .then((res) => {
         console.log(res);
+        navigate("/profile")
+
       })
       .catch((error) => {
         console.error(error);

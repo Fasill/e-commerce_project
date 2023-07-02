@@ -1,0 +1,21 @@
+.subNav{
+  background-color:  #A51910;
+  width: 814px;
+  height:58px;
+  margin-top:3.8rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  display:flex;
+  color:white;  
+  gap:10.5rem;
+  
+}
+.product{
+  margin-top: 1rem;
+  margin-left:1.5rem;
+  font-weight: bold;
+}
+.delet1{
+  transform: scale(0.6);
+
+}

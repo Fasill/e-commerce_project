@@ -7,6 +7,30 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import '../../../back-end/product_images/'
 export const Products = () => {
   const [allProducts, setAllProducts] = useState([]);
+  const token = localStorage.getItem('token')
+
+  const addToCart = (product) => {
+    console.log("clicked")
+    const cartItem = {
+      productId: product._id,
+      quantity: 1,
+      token:token
+      
+    };
+    console.log(cartItem)
+
+    axios.post('http://localhost:8080/products/cart/add', cartItem)
+      .then(res => {
+        console.log(res.data)
+        // Handle the response if needed
+      })
+      .catch(error => {
+        console.log(error)
+        // Handle any errors that occurred during the request
+      });
+  }
+
+
 
   useEffect(() => {
     axios.get('http://localhost:8080/products')
@@ -46,7 +70,9 @@ export const Products = () => {
               <h1 className ="product-title" key={product.id}>{product.name}</h1>
               <p className ="product-price">{product.price} </p>
               </div>
-              <button className="mybtn btn btn-primary"><img className="cart-icon" src={`${imagePath}/add-to-cart.svg`}/></button>
+              <button onClick={() => addToCart(product) } className="mybtn btn btn-primary">
+                  <img className="cart-icon" src={`${imagePath}/add-to-cart.svg`} alt="Add to Cart" />
+                </button>
             </div>
             </div>
           ))}
