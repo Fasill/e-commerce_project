@@ -79,14 +79,18 @@ export const search = async (req,res)=>{
 // cart prosess
 
 export const cartTraverse = async (req, res) => {
+  console.log("reading the token")
   const token = req.body.token;
+  console.log(token)
+  
   const decodedToken = jwt.decode(token);
   const id = decodedToken.id;
   try {
+    const personalRequirment = await personSchema.findById(id)
     const person = await personSchema.findById(id).populate('cart.productId');
     const cartProducts = person.cart.map((cartItem) => cartItem.productId);
 
-    res.status(200).json({ cart: cartProducts });
+    res.status(200).json({ cart: cartProducts,personalRequirment:personalRequirment.cart });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'An error occurred while fetching the cart.' });
