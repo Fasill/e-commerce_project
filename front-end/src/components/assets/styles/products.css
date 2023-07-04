@@ -34,12 +34,13 @@ header:hover {
 }
 .product-card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  translate:0;
   border-radius: 27px;
   /* padding: 10px; */
   width: 216px;
   height: 317px;
   margin: 0;
-  transition: margin 1s;
+  transition: translate 1s;
   display: grid;
 }
 
@@ -53,7 +54,10 @@ header:hover {
 }
 
 .product-card:hover{
-  margin: -5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+  /* margin: -5px; */
+  translate: 3px;
 
 }
 

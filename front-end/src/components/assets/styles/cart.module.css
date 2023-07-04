@@ -25,18 +25,26 @@
 .input_container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  
+  
 }
 
 .input_field {
-  width: 40px;
+  width: 30px;
   text-align: center;
-}
-
-.separator {
   border: none;
-  border-top: 1px solid #ccc;
-  margin: 10px 0;
+  /* background-color: #ccc; */
+  height: 2.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+}
+.btnPlus,
+.btnMinus{
+  /* background-color: #ccc; */
+  border: none;
+  width: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
 }
 .products {
   display: grid;
@@ -57,7 +65,7 @@
 
 .the_rest{
   margin-left:4.5rem ;
-  gap:9rem;
+  gap:11.5rem;
   display: flex;
 
 }
@@ -79,9 +87,43 @@
   align-items: center;
 }
 .delet2{
-  margin-left: 3.3rem;
+  margin-left: -0.8rem;
+  cursor: pointer;
+
 }
+
 .product_name{
   font-weight: bold;
   /* margin-right: m; */
+}
+.discount_total{
+  margin-top: 1rem;
+  font-weight: bold;
+  display: grid;
+  grid-gap: 2rem;
+  width: 48rem;
+}
+.discount{
+  display: flex;
+  gap:10.5rem;
+  margin-left:4rem;
+  border-top: 1.5px #A51910 solid;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+
+  border-bottom: 1.5px #A51910 solid;
+}
+.disBirr{
+  margin-left:3rem;
+}
+
+.disTxt{
+  margin-left:-0.5rem;
+
+}
+.total{
+  display: flex;
+  gap:13rem;
+  margin-left:18rem;
+
 }

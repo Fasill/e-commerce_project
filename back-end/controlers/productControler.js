@@ -86,11 +86,10 @@ export const cartTraverse = async (req, res) => {
   const decodedToken = jwt.decode(token);
   const id = decodedToken.id;
   try {
-    const personalRequirment = await personSchema.findById(id)
     const person = await personSchema.findById(id).populate('cart.productId');
     const cartProducts = person.cart.map((cartItem) => cartItem.productId);
 
-    res.status(200).json({ cart: cartProducts,personalRequirment:personalRequirment.cart });
+    res.status(200).json({ cart: cartProducts, });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'An error occurred while fetching the cart.' });
@@ -141,7 +140,9 @@ export const removeFromCart = async(req,res)=>{
       const cartIndex = user.cart.findIndex(item => item.productId.toString() === productId);
   
       if (cartIndex === -1) {
-        return res.status(404).json({ message: 'Cart item not found.' });
+        console.log('Cart item not found.')
+
+        return res.status(200).json({ message: 'Cart item not found.' });
       }
   
       user.cart.splice(cartIndex, 1);

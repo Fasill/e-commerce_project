@@ -48,19 +48,7 @@ export const Products = () => {
       <main>
         <div className='products'>
           {allProducts.map((product) => (
-             
-            // ---------------------
-              // <div className="card">
-              //   <img src={`${imagePath}/images/${product.image.filename}`} className="card-img-top" alt="Fissure in Sandstone"/>
-              //   <div className="card-body">
-              //     <div>
-              //     <h5 className="card-title">{product.name}</h5>
-              //     <p className="card-text">{product.price}</p>
-              //     </div>
-              //     <a href="#!" className="btn btn-primary custom-btn"><img className="cart-icon" src={`${imagePath}/add-to-cart.svg`}/></a>
-              //   </div>
-              // </div>
-// ====================================================================================
+
             <div className='product-card'>
               {/* <img  className="product-image" src="https://cdn.anscommerce.com/catalog/brandstore/johnson/17_7_20/Sale.jpg" /> */}
 
