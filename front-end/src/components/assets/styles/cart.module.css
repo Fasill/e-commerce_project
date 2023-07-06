@@ -1,3 +1,7 @@
+.main{
+  display: flex;
+  gap: 1rem;
+}
 .subNav{
   background-color:  #A51910;
   width: 814px;
@@ -126,4 +130,41 @@
   gap:13rem;
   margin-left:18rem;
 
+}
+.right{
+  border-left: 2px silver solid ;
+  margin-top: 2rem;
+  padding-left: 1rem;
+  
+  /* margin-bottom: 75rem; */
+
+}
+.ttitle{
+
+  display:flex;
+  margin-left: 3rem;
+  gap: 0.5rem;
+
+  font-weight: bold;
+  margin-top: 4.5rem;
+  scale: 1.5;
+  margin-left: 5rem;
+  
+}
+.credit_image{
+  scale: 1.3;
+  margin-bottom: 1rem;
+
+}
+.bankInfo{
+  margin-left: 1.6rem;
+}
+.accNo,.bank{
+  display: flex;
+  gap:0.5rem;
+  font-weight: bold;
+}
+
+.acckey,.bankKey{
+  color:#A51910;
 }

@@ -4,13 +4,37 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import deleteWhiteSvg from './assets/images/deletWhite.svg';
 import deleteBlackSvg from './assets/images/deletRed.svg';
+import creditCardSvg from './assets/images/credit-card.svg';
 
 export const Cart = () => {
   const [allCart, setAllCart] = useState([]);
   const [counters, setCounters] = useState([]);
+  const [bank, setBank] = useState("");
+  const [accNo, setAccNo] = useState("");
+
+
   const [total, setTotal] = useState(0);
   const token = localStorage.getItem('token');
+  
+  const buy = ()=>{
+    const info = {
+      amount:total,
+      token:token
+    }
+    console.log("sending")
+    axios
+    .post(`http://localhost:8080/products/pay`,  {amount:total,
+    token:token})
+    .then((response) => {
+    console.log("seccesfuly sent")
 
+      console.log(response);
+      fetchCart();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
   const onDelete = (product) => {
     const productId = product._id;
 
@@ -30,6 +54,9 @@ export const Cart = () => {
       .post('http://localhost:8080/products/cart', { token: token })
       .then((res) => {
         setAllCart(res.data.cart);
+        setBank(res.data.bankInfo.enumBanks)
+        setAccNo(res.data.bankInfo.accountNumber)
+        console.log(res.data.bankInfo)
         const initialCounters = Array(res.data.cart.length).fill(1);
         setCounters(initialCounters);
       })
@@ -73,7 +100,7 @@ export const Cart = () => {
   return (
     <div>
       <Navbar className="navbar" />
-      <main>
+      <main className={style.main}>
         <div className={style.left}>
           <div className={style.subNav}>
             <p className={style.product}>PRODUCT</p>
@@ -110,7 +137,28 @@ export const Cart = () => {
             </div>
           </div>
         </div>
-        <div className={style.right}></div>
+               
+
+        <div className={style.right}>
+              <div className={style.ttitle}>
+                  <img className={style.credit_image} src={creditCardSvg} alt="/" />
+                  <p className={style.ttitle_txt}>CHECK OUT</p>
+                </div>
+
+                <div className={style.bankInfo}>
+                <div className={style.bank}>
+                    <p className={style.bankKey}>Bank:</p>
+                    <p className={style.bankValue}>{bank}</p>
+                    </div>
+                  <div className={style.accNo}>
+                    <p className={style.acckey}>Account:</p>
+                    <p className={style.accValue}>{accNo}</p>
+                    </div>
+                  <button onClick=
+                    {buy}
+                  >buy</button>
+                </div>
+        </div>
       </main>
     </div>
   );

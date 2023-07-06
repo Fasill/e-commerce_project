@@ -1,6 +1,6 @@
 import ProductSchema from '../model/products.js'
 import personSchema from "../model/person.js";
-
+import axios from 'axios'
 import jwt from 'jsonwebtoken'
 
 export const allTraverse = async (req, res) => {
@@ -86,10 +86,11 @@ export const cartTraverse = async (req, res) => {
   const decodedToken = jwt.decode(token);
   const id = decodedToken.id;
   try {
+    const activeUser = await personSchema.findById(id)
     const person = await personSchema.findById(id).populate('cart.productId');
     const cartProducts = person.cart.map((cartItem) => cartItem.productId);
 
-    res.status(200).json({ cart: cartProducts, });
+    res.status(200).json({ cart: cartProducts,bankInfo:activeUser.paymentInformation });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'An error occurred while fetching the cart.' });
@@ -164,3 +165,53 @@ export const updateCart = async(req,res)=>{
 
 
 }
+export const payment = async(req,res)=>{
+  const {amount,token} = req.body; 
+
+  console.log(amount);
+  // const token = req.body.token;
+  console.log("decodding token")
+  const decodedToken = jwt.decode(token);
+  console.log("token decoded")
+  const id = decodedToken.id;
+  console.log(id);
+  
+  try{
+    const user = personSchema.findById(id)
+    const name = user.name
+    const first_name = name.split(" ")
+
+    const infos = {
+      amount : amount,
+      currency: "ETB",
+      email:user.email,
+      first_name: first_name[0],
+      last_name: first_name[0],
+      phone_number: "0940798785",
+      tx_ref: "chewatatest-6669",
+      callback_url: "http://localhost:8080/products/webhook",
+      return_url: "http://localhost:3000/",
+      title: "Payment for my favourite merchant",
+      description: "I love online payments."
+
+    }
+    const headers = {
+      'Authorization': `Bearer ${token}`
+    }
+    axios.post('https://api.chapa.co/v1/transaction/initialize',infos,{headers})
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+  }catch(e){
+    console.log(e)
+  }
+
+}
+export const webhook = (req,res) =>{
+  console.log(res.body)
+}
+
