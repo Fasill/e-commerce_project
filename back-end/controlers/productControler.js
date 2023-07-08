@@ -168,7 +168,7 @@ export const updateCart = async(req,res)=>{
 export const payment = async(req,res)=>{
   const {amount,token} = req.body; 
 
-  console.log(amount);
+  console.log(token);
   // const token = req.body.token;
   console.log("decodding token")
   const decodedToken = jwt.decode(token);
@@ -177,8 +177,9 @@ export const payment = async(req,res)=>{
   console.log(id);
   
   try{
-    const user = personSchema.findById(id)
+    const user = await personSchema.findById(id)
     const name = user.name
+    console.log(name)
     const first_name = name.split(" ")
 
     const infos = {
