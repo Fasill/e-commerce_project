@@ -1,34 +1,75 @@
 import style from './assets/styles/cart.module.css';
+
+import 'bootstrap/dist/css/bootstrap.css';
 import { Navbar } from './navbar.js';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from "@hookform/resolvers/yup";
+import * as yup from 'yup';
 import deleteWhiteSvg from './assets/images/deletWhite.svg';
 import deleteBlackSvg from './assets/images/deletRed.svg';
 import creditCardSvg from './assets/images/credit-card.svg';
+import { useNavigate } from 'react-router-dom';
 
 export const Cart = () => {
+  const navigate = useNavigate()
+
   const [allCart, setAllCart] = useState([]);
   const [counters, setCounters] = useState([]);
   const [bank, setBank] = useState("");
   const [accNo, setAccNo] = useState("");
+  const [phoneNumber,setPhoneNumber] = useState("")
+  const {paymentURL,setPaymentURL} = useState("")
 
+  const handleOpenPaymentGateway = (paymentURL) => {
+    window.open(paymentURL, '_blank');
+  };
 
+  const schema = yup.object().shape({
+
+    phoneNumber: yup.string()
+    .email('Invalid email address')
+    .required('Email is required'),
+
+  })
+  
+  const{register, handleSubmit, formState:{errors}} = useForm({
+    resolver:yupResolver(schema)
+  });
+
+  
+  
+  
   const [total, setTotal] = useState(0);
   const token = localStorage.getItem('token');
   
+
+
+
   const buy = ()=>{
     const info = {
       amount:total,
-      token:token
+      token:token,
     }
+    
     console.log("sending")
+    console.log(phoneNumber)
+
     axios
     .post(`http://localhost:8080/products/pay`,  {amount:total,
-    token:token})
+                                                 token:token,
+                                                 phoneNumber:phoneNumber
+                                                })
     .then((response) => {
-    console.log("seccesfuly sent")
-
       console.log(response);
+      console.log("successfully sent");
+
+      // Open the payment gateway URL in a new tab
+      handleOpenPaymentGateway(response.data.PaymentURL);
+
+      navigate("/"); // Optionally, navigate to a different page after opening the payment gateway
+
       fetchCart();
     })
     .catch((error) => {
@@ -154,9 +195,25 @@ export const Cart = () => {
                     <p className={style.acckey}>Account:</p>
                     <p className={style.accValue}>{accNo}</p>
                     </div>
-                  <button onClick=
-                    {buy}
-                  >buy</button>
+                    
+                      <div classnName = {style.phoneNumber}>
+                        <p className = {style.phone}>Phone Number</p>
+                    <div className="input-group mb-3">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">+251</span>
+                      </div>
+                    <input 
+                        className="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+                        type="number" 
+                        placeholder='940798785'
+                        {...register("password")}
+                        value={phoneNumber}
+                        onChange={(e)=>setPhoneNumber(e.target.value)}
+                        />
+                    <input onClick = {buy} className="submit-btn" type="submit" value="Buy"/>
+                        {/* <p className='error-msg2'>{errors.password?.message}</p> */}
+                    </div>
+                    </div>
                 </div>
         </div>
       </main>

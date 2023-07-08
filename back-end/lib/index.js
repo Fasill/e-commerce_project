@@ -2,18 +2,13 @@ import axios from "axios";
 import { signES256 } from "./utils/cryptography.js";
 import { PRODUCTION_BASE_URL, TEST_BASE_URL } from "./utils/constants.js";
 
-
-
 export class SantimpaySdk {
   constructor(merchantId, privateKey, testBed = false) {
     this.privateKey = privateKey;
     this.merchantId = merchantId;
-    this.baseUrl = PRODUCTION_BASE_URL;
-    if (testBed) {
-      this.baseUrl = TEST_BASE_URL;
-    }
+    this.baseUrl = testBed ? TEST_BASE_URL : PRODUCTION_BASE_URL;
   }
- 
+
   generateSignedTokenForInitiatePayment(amount, paymentReason) {
     const time = Math.floor(Date.now() / 1000);
     const payload = {
@@ -24,41 +19,46 @@ export class SantimpaySdk {
     };
     return signES256(payload, this.privateKey);
   }
-  // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-==-
 
-    // ...
-  
-    async checkTransactionStatus(id) {
-      try {
-        const response = await axios.get(`${this.baseUrl}/transactions/${id}`, {
-          // headers: {
-          //   Authorization: `Bearer ${this.token}`
-          // }
-        });
-  
-        if (response.status === 200) {
-          return response.data;
-        } else {
-          throw new Error("Failed to check transaction status");
-        }
-      } catch (error) {
-        if (error.response && error.response.data) {
-          throw error.response.data;
-        }
-        throw error;
-      }
-    }
-
-  
-
-
-
-
-  // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-==-
- 
-  async generatePaymentUrl(id, amount, paymentReason, successRedirectUrl, failureRedirectUrl, notifyUrl, phoneNumber = "") {
+  async checkTransactionStatus(id) {
     try {
-      const token = this.generateSignedTokenForInitiatePayment(amount, paymentReason);
+      const token = this.generateSignedTokenForInitiatePayment("", ""); // Generate an empty token
+      const response = await axios.get(
+        `${this.baseUrl}/transactions/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      if (response.status === 200) {
+        return response.data;
+      } else {
+        throw new Error("Failed to check transaction status");
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        throw error.response.data;
+      }
+      throw error;
+    }
+  }
+
+  async generatePaymentUrl(
+    id,
+    amount,
+    paymentReason,
+    successRedirectUrl,
+    failureRedirectUrl,
+    notifyUrl,
+    phoneNumber = ""
+  ) {
+    try {
+      const token = this.generateSignedTokenForInitiatePayment(
+        amount,
+        paymentReason
+      );
       const payload = {
         id,
         amount,
@@ -72,13 +72,9 @@ export class SantimpaySdk {
       if (phoneNumber && phoneNumber.length > 0) {
         payload.phoneNumber = phoneNumber;
       }
-      const response = await axios.post(`${this.baseUrl}/initiate-payment`, payload
-
-      // {
-      // headers: {
-      //   Authorization: `Bearer ${this.token}`
-      // }
-      // }
+      const response = await axios.post(
+        `${this.baseUrl}/initiate-payment`,
+        payload
       );
 
       if (response.status === 200) {
@@ -94,4 +90,5 @@ export class SantimpaySdk {
     }
   }
 }
+
 export default SantimpaySdk;
