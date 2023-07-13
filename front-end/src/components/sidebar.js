@@ -6,7 +6,8 @@ export const Sidebar = () => {
   const search = (value)=>{
     console.log(value)
     axios
-      .post('')
+      .post("http://localhost:8080/products",{value:value})
+      
 
   }
 
@@ -18,13 +19,13 @@ export const Sidebar = () => {
                     <img className='products_tttle_underline' src={svg}/>
                   
                   </li>
-                  <li><a href="#" onClick={()=>search("Clothes")}>Clothes</a></li>
-                  <li><a href="#" onClick={()=>search("Watches")}>Watches</a></li>
-                  <li><a href="#" onClick={()=>search("Bags")}>Bags</a></li>
-                  <li><a href="#" onClick={()=>search("Glasses")}>Glasses</a></li>
-                  <li><a href="#" onClick={()=>search("Cosmetics")}>Cosmetics</a></li>
-                  <li><a href="#" onClick={()=>search("Perfume")}>Perfume</a></li>
-                  <li><a href="#" onClick={()=>search("Footwear")}>Footwear</a></li>
+                  <li><a href="#" onClick={()=>search("clothes")}>Clothes</a></li>
+                  <li><a href="#" onClick={()=>search("watches")}>Watches</a></li>
+                  <li><a href="#" onClick={()=>search("bags")}>Bags</a></li>
+                  <li><a href="#" onClick={()=>search("glasses")}>Glasses</a></li>
+                  <li><a href="#" onClick={()=>search("cosmetics")}>Cosmetics</a></li>
+                  <li><a href="#" onClick={()=>search("perfume")}>Perfume</a></li>
+                  <li><a href="#" onClick={()=>search("footwear")}>Footwear</a></li>
               </ul>
         
   );

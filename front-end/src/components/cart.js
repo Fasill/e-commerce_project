@@ -94,6 +94,9 @@ export const Cart = () => {
     axios
       .post('http://localhost:8080/products/cart', { token: token })
       .then((res) => {
+        console.log("getting carts")
+        console.log(res.data.cart)
+
         setAllCart(res.data.cart);
         setBank(res.data.bankInfo.enumBanks)
         setAccNo(res.data.bankInfo.accountNumber)
