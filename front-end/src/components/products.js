@@ -3,9 +3,11 @@ import axios from 'axios';
 import { Navbar } from './navbar';
 import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import svg from './assets/images/underline.svg'
+import { Sidebar } from './sidebar';
 
-// import '../../../back-end/product_images/'
 export const Products = () => {
+
   const [allProducts, setAllProducts] = useState([]);
   const token = localStorage.getItem('token')
 
@@ -42,10 +44,16 @@ export const Products = () => {
   const imagePath = process.env.PUBLIC_URL ;
 
   return (
-    <div>
+    <div className='all_page'>
       <div className='background'></div>
       <Navbar className='navbar' />
-      <main>
+      <main className='productsMain'>
+        <div className="sidebar">
+          <Sidebar/>
+          </div>
+        <div className='all_products'>
+        <h1 className='products_tttle'>All Products</h1>
+        <img className='products_tttle_underline' src={svg}/>
         <div className='products'>
           {allProducts.map((product) => (
 
@@ -64,6 +72,7 @@ export const Products = () => {
             </div>
             </div>
           ))}
+        </div>
         </div>
       </main>
       <div>

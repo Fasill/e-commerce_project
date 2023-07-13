@@ -60,14 +60,30 @@ header:hover {
   translate: 3px;
 
 }
+.all_products{
+  display: grid;
+  margin-right: 2rem;
 
+}
+.products_tttle{
+  font-size: 2.2rem;
+  text-align: left;
+  margin-left: 19rem;
+  margin-top: 1rem;
+  text-underline-offset: #A51910;
+  /* marg */
+  }
+.products_tttle_underline{
+  margin-left: 23rem;
+
+}
 .products{
   /* gap:1rem; */
   /* background-color: rgb(237, 228, 217); */
-  margin-left:20rem;
-  margin-top: 218px;
+  margin-left:19rem;
+  margin-top: 100px;
 
-  width: 75rem;
+  width: 65rem;
   height: 70rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -75,7 +91,7 @@ header:hover {
   /* grid-row-gap: 0rem;  */
   grid-auto-rows: 22rem; /* Set the desired height of each row */
   /* grid-gap: 10px */
-  gap: 1rem;
+  gap: rem;
 }
 .cart-icon{
   /* size:150%; */
@@ -128,4 +144,63 @@ header:hover {
 .btn.btn-primary:hover{
   background-color:  #7f130c;
 
+}
+.sidebar {
+  position: fixed;
+  background-color: #f2f2f2;
+  width: 175px;
+  padding: 30px;
+  border-top-right-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+
+  margin-top: 5rem;
+
+  /* column-gap: 20px; */
+
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+  height: 28rem;
+  transition: box-shadow 0.2s;
+}
+.sidebar:hover{
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+
+
+}
+.sidebar ul {
+  text-align: left;
+  display: grid;
+  grid-gap: 1rem;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 5px;
+}
+
+.sidebar ul li a:hover{
+  color:#A51910
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+}
+.productsMain{
+  display: flex;
+  gap: 0px;
+
+}
+.sidebar h1 {
+  /* margin-right: rem; */
+  font-size:1rem ;
+  font-weight: bold;
+}
+.sidebar ul li img {
+  margin-left: 0.2rem;
+  scale: 0.7;
+  margin-top: -2.5rem;
+  
 }
