@@ -59,6 +59,16 @@
   transition: background-color 0.4s;
   background-color: #EFEFEF;
 }
+.submit_btn{
+  height: 2rem;
+  border-bottom: none;
+  border-radius: 2.5rem;
+  background-color: #A51910;
+  font-size: 1rem;
+  color: white;
+  opacity: 1;
+  border: none;
+}
 .btn1,.btn2{
 width: 9rem;
 margin-left: 16rem;
@@ -91,7 +101,8 @@ margin-left: 16rem;
 }
 .top{
   content: "";
-
+  border-bottom: 2px solid;
+  border-color: #A51910;
   background-color: rgb(161, 160, 160);
   padding-left: 10rem;
   width: 85rem;
@@ -119,3 +130,39 @@ margin-left: 16rem;
   margin-top: -12rem;
   transform: scale(2);
 }
+.topbtns{
+  display: flex;
+  gap:3rem;
+  margin-left: 50rem;
+  margin-top:1rem;
+  /* background-color: #A51910; */
+}
+.MyProducts,.AddNewProduct{
+  width: 9rem;
+  background-color:  rgb(161, 160, 160);
+  border: none;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-right: 2px solid;
+
+  border-color: #A51910;
+  color: white;
+  transition: color 0.2s ease;
+  text-shadow:  2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.AddNewProduct{
+  background-color:  rgb(161, 160, 160);
+
+  
+  /* border-color:  #A51910; */
+  /* color: #75120a; */
+
+
+
+}
+.MyProducts:hover,.AddNewProduct:hover{
+  color: #c0625a;
+
+}
+  

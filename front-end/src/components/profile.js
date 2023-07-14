@@ -15,6 +15,12 @@ export const Profile = () => {
 
 
   const navigate = useNavigate()
+
+  const myProduct = ()=>{
+    localStorage.setItem("path","fromSeller")
+    navigate('/products')
+    console.log("y")
+  }
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem('token');
@@ -45,7 +51,6 @@ export const Profile = () => {
     fetchData();
   }, [navigate]);
 
-
   return (
     <div>
       <div className='background'></div>
@@ -59,6 +64,11 @@ export const Profile = () => {
             <img src={penSvg} className={style.pen} href='/' alt='/edit'/>
             </Link>
           </div>
+          {type === "seller"?
+          <div className={style.topbtns}>
+            <button onClick={myProduct} className={`${style.submit_btn} ${style.MyProducts} `} >My Products</button>
+            <button onClick={myProduct} className={`${style.submit_btn} ${style.AddNewProduct} `} >Add New Product</button>
+          </div>: <> </>}
         </div>
         <div className={style.fill} id='section2'>
         <div className={style.left}>

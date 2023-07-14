@@ -33,6 +33,9 @@ export const SearchedProducts = () => {
 
   useEffect(() => {
     const value = localStorage.getItem('value')
+    const path = localStorage.getItem('path')
+
+    
     axios.post('http://localhost:8080/products',{value})
       .then(res => {
         console.log(token);
