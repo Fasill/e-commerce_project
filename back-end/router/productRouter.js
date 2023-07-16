@@ -2,8 +2,11 @@ import express from "express";
 import {allTraverse,creatAProduct,search,cartTraverse,addToCart,removeFromCart,updateCart,payment,webhook} from '../controlers/productControler.js'
 import {upload} from '../middleware/multer.js'
 import {pay} from "../controlers/payment.js"
+import {payHandler} from "../controlers/paymentTest.js"
+
+
 const productRouter = express.Router();
-productRouter.post('/pay',pay)
+productRouter.post('/pay',payHandler)
 productRouter.post('/cart',cartTraverse);
 productRouter.post('/cart/add',addToCart);
 productRouter.delete('/cart/remove/:productId/:token',removeFromCart);

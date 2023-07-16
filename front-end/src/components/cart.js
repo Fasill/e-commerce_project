@@ -49,7 +49,7 @@ export const Cart = () => {
 
   const buy = ()=>{
     const info = {
-      amount:total,
+      amount:total.toString(),
       token:token,
     }
     
