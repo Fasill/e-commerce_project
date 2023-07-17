@@ -79,6 +79,7 @@ export const Home = ()=>{
       <AllProducts className = {style.item}/>
 
       {/* </div> */}
+      <div className={style.footer}></div>
   </div>
     </div>
   </div>
