@@ -2,10 +2,10 @@ import { Chapa } from 'chapa-nodejs';
 import ProductSchema from '../model/products.js'
 import personSchema from "../model/person.js";
 import jwt from 'jsonwebtoken'
+const chapa = new Chapa({ secretKey: 'CHASECK_TEST-ToQwoI5kwZPCuNowm7E1sBLZvLBzoCR5' });
 
 export const payHandler = async (req ,res) => {
   const { amount, token, phoneNumber } = req.body;
-  const chapa = new Chapa({ secretKey: 'CHASECK_TEST-ToQwoI5kwZPCuNowm7E1sBLZvLBzoCR5' });
   const decodedToken = jwt.decode(token);
   const id = decodedToken.id;
 
@@ -46,3 +46,17 @@ export const payHandler = async (req ,res) => {
     res.status(500).json({ error: error.message });
   }
 };
+export const veridypayment  = async(req,res)=>{
+
+  try{
+    const response = await chapa.verify({
+      tx_ref: 'TX-JHBUVLM7HYMSWDA',
+    });
+    res.status(200).json({ PaymentURL: response.data.checkout_url });
+  }catch(error){
+    res.status(500).json({ error: error.message });
+
+    console.log( "Error", error.message)
+  }
+
+}

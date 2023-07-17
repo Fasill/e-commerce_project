@@ -34,7 +34,7 @@ export const AllProducts = () => {
   useEffect(() => {
     axios.get('http://localhost:8080/products')
       .then(res => {
-        console.log(token);
+        console.log(res.data.allinfo);
         setAllProducts(res.data.allinfo);
       });
   }, []);

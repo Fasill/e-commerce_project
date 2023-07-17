@@ -2,7 +2,7 @@ import express from "express";
 import {allTraverse,creatAProduct,search,cartTraverse,addToCart,removeFromCart,updateCart,payment,webhook} from '../controlers/productControler.js'
 import {upload} from '../middleware/multer.js'
 import {pay} from "../controlers/payment.js"
-import {payHandler} from "../controlers/paymentTest.js"
+import {payHandler,veridypayment} from "../controlers/paymentTest.js"
 
 
 const productRouter = express.Router();
@@ -16,4 +16,5 @@ productRouter.get('/',allTraverse);
 productRouter.post('/',search);
 productRouter.post('/create',upload.array('images'),creatAProduct);
 productRouter.post('/webhook',webhook)
+productRouter.post('/veridypayment',veridypayment)
 export default productRouter;

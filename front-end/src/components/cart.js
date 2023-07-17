@@ -21,6 +21,7 @@ export const Cart = () => {
   const [accNo, setAccNo] = useState("");
   const [phoneNumber,setPhoneNumber] = useState("")
   const {paymentURL,setPaymentURL} = useState("")
+  const {quantity,setQuantity} = useState(0)
 
   const handleOpenPaymentGateway = (paymentURL) => {
     window.open(paymentURL, '_blank');
@@ -96,12 +97,14 @@ export const Cart = () => {
       .then((res) => {
         console.log("getting carts")
         console.log(res.data.cart)
-
+        // setQuantity(res.data.quantity)
         setAllCart(res.data.cart);
         setBank(res.data.bankInfo.enumBanks)
         setAccNo(res.data.bankInfo.accountNumber)
+
         console.log(res.data.bankInfo)
         const initialCounters = Array(res.data.cart.length).fill(1);
+        // console.log("srs",initialCounters)
         setCounters(initialCounters);
       })
       .catch((error) => {
@@ -122,14 +125,19 @@ export const Cart = () => {
   }, [allCart, counters]);
 
   const imagePath = process.env.PUBLIC_URL;
+// =========================================================
+const handleIncrement = (index) => {
+  setCounters((prevCounters) => {
+    const updatedCounters = [...prevCounters];
 
-  const handleIncrement = (index) => {
-    setCounters((prevCounters) => {
-      const updatedCounters = [...prevCounters];
+    if (updatedCounters[index] < allCart[index].quantity) { // Check if counter is less than the available quantity
       updatedCounters[index] += 1;
-      return updatedCounters;
-    });
-  };
+    }
+    
+    return updatedCounters;
+  });
+};
+
 
   const handleDecrement = (index) => {
     setCounters((prevCounters) => {
