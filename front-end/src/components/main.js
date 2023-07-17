@@ -1,13 +1,15 @@
 import { Navbar } from "./navbar.js"
 import { Home } from "./home.js"
-import "./assets/styles/main.css"
+import style from "./assets/styles/main.module.css"
 
 export const Main = () => {
   return (
-    <div className="main">
+    <div className={style.main}>
 
-      <Navbar className="navbar" />
-      <Home />
+      <div className={style.navbar}>
+        <Navbar  />
+      </div>
+      <Home className = {style.home} />
     </div>
   )
 }
