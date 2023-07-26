@@ -75,6 +75,28 @@ export const search = async (req,res)=>{
     
   }catch(e){console.log(e)}
 }
+export const myProduct = async(req,res)=>{
+  const token = req.body.token;
+  console.log(token)
+  
+  const decodedToken = jwt.decode(token);
+  const id = decodedToken.id;
+  console.log(id)
+
+
+  try{
+    let products = await ProductSchema.find({seller:id})
+    if (products){
+      res.json({allinfo:products});
+    }
+     else{
+       return res.status(404).json({ message: 'No products found' });
+     }
+  }catch(e){
+    console.log(e);
+  }
+
+}
 
 // cart prosess
 

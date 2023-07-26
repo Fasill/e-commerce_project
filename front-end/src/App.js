@@ -4,7 +4,10 @@ import { Signin } from './components/signin.js'
 import { Signup} from'./components/signup.js'
 import { Customer,Seller} from './components/additionalInfo.js'
 import { Products } from './components/products.js';
+import { MyProducts } from './components/myProducts.js';
+
 import { Profile} from './components/profile.js';
+
 import { Cart} from './components/cart.js';
 
 import './App.css';
@@ -21,6 +24,7 @@ function App() {
           <Route path="/signup/customer"  element={<Customer/>} />
           <Route path="/signup/seller" element={<Seller/>} />
           <Route path="/products" element={<Products/>} />
+          <Route path="/myProducts" element={<MyProducts/>} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/cart" element={<Cart/>} />
 

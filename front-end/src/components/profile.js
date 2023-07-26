@@ -18,7 +18,7 @@ export const Profile = () => {
 
   const myProduct = ()=>{
     localStorage.setItem("path","fromSeller")
-    navigate('/products')
+    navigate('/myproducts')
     console.log("y")
   }
   useEffect(() => {
