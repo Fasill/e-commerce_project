@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import ProfileImg from './assets/images/profileModel.svg'
 import penSvg from './assets/images/pen.svg'
 import { Link, animateScroll as scroll } from 'react-scroll';
+import {CreateProduct} from './createProduct.js' 
 
 export const Profile = () => {
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [type,setType] = useState("")
+  const [showCreateProduct, setShowCreateProduct] = useState(false);
 
 
   const navigate = useNavigate()
@@ -21,6 +23,13 @@ export const Profile = () => {
     navigate('/myproducts')
     console.log("y")
   }
+
+  const addNewProduct = () => {
+    setShowCreateProduct(true);
+  };
+
+
+
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem('token');
@@ -52,7 +61,10 @@ export const Profile = () => {
   }, [navigate]);
 
   return (
-    <div>
+    <div className = {style.container}>
+
+    
+    <div className = {style.backprofile ? showCreateProduct : style.profile}>
       <div className='background'></div>
       <Navbar className='navbar' />
       <main className={style.mainProfile}>
@@ -67,7 +79,7 @@ export const Profile = () => {
           {type === "seller"?
           <div className={style.topbtns}>
             <button onClick={myProduct} className={`${style.submit_btn} ${style.MyProducts} `} >My Products</button>
-            <button onClick={myProduct} className={`${style.submit_btn} ${style.AddNewProduct} `} >Add New Product</button>
+            <button onClick={addNewProduct} className={`${style.submit_btn} ${style.AddNewProduct} `} >Add New Product</button>
           </div>: <> </>}
         </div>
         <div className={style.fill} id='section2'>
@@ -137,6 +149,12 @@ export const Profile = () => {
       <div>
         {/* Additional content */}
       </div>
+    </div>
+      {showCreateProduct && (
+        <div className={style.create_product}>
+          <CreateProduct />
+        </div>
+      )}
     </div>
   );
 };

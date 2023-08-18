@@ -19,19 +19,18 @@ export const allTraverse = async (req, res) => {
 
 
 export const creatAProduct =async (req,res)=>{
-  const token = req.body.token;
-  console.log(req.body);
-  const decodedToken = jwt.decode(token);
-  const id = decodedToken.id
 
   const files = req.files;
 
-  // Save the file information to your MongoDB Atlas database using Mongoose
   const images = files.map((file) => {
-    const{name,description,price,quantity,category,isAvailable} = req.body;
-    let { tag } = req.body;
+
+    var{name,description,price,quantity,category,isAvailable,tag,token} = req.body;
+ 
+    const decodedToken = jwt.decode(token);
+    const id = decodedToken.id
+  
+
     if (typeof tag === "string") {
-      // Split the comma-separated tags into an array
       tag = tag.split(",").map((tag) => tag.trim());
     }
     return new ProductSchema({
