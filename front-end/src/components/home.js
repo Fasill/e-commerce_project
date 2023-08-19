@@ -2,7 +2,7 @@ import style from './assets/styles/allproducts_side_view.module.css';
 
 import { Navbar } from "./navbar.js"
 import svg from './assets/images/underline.svg'
-
+import {Footer} from './footer.js'
 import arrow from './assets/images/arrow.svg'
 import girls from './assets/images/girls.svg'
 import BackgroundSVG from './assets/images/HomeB.svg'
@@ -79,7 +79,9 @@ export const Home = ()=>{
       <AllProducts className = {style.item}/>
 
       {/* </div> */}
-      <div className={style.footer}></div>
+      <Footer/>
+
+      {/* <div className={style.footer}></div> */}
   </div>
     </div>
   </div>

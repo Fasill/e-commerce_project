@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 import { Main } from './components/main.js';
 import { Signin } from './components/signin.js'
 import { Signup} from'./components/signup.js'
+import {Footer} from './components/footer.js'
 import { Customer,Seller} from './components/additionalInfo.js'
 import { Products } from './components/products.js';
 import { MyProducts } from './components/myProducts.js';
