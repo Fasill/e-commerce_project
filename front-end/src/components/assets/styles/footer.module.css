@@ -6,6 +6,7 @@
   padding: 1rem;
   width: 100%;
   height: auto;
+  z-index: -999;
 }
 
 .top, .middle, .bottom {
@@ -37,11 +38,10 @@
 .middleContern3 ul{
   display: flex;
   gap:1rem;
-  margin-top:10rem
+  margin-top:7rem
 
 }
-.middleContern3 img{
-}
+
 .middle ul li {
   list-style: none;
   text-align: left;
@@ -57,7 +57,7 @@
   display: flex;
   justify-content: space-between;
   border-top:2px solid rgb(166, 166, 166);
-
+  padding-top: 1rem;
 }
 .bottom ul {
   display: flex;

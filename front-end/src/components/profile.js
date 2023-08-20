@@ -8,13 +8,15 @@ import ProfileImg from './assets/images/profileModel.svg'
 import penSvg from './assets/images/pen.svg'
 import { Link, animateScroll as scroll } from 'react-scroll';
 import {CreateProduct} from './createProduct.js' 
+import {Footer} from './footer.js'
+import {motion} from 'framer-motion'
+
 
 export const Profile = () => {
   const [name,setName] = useState("")
   const [email,setEmail] = useState("")
   const [type,setType] = useState("")
   const [showCreateProduct, setShowCreateProduct] = useState(false);
-
 
   const navigate = useNavigate()
 
@@ -61,6 +63,7 @@ export const Profile = () => {
   }, [navigate]);
 
   return (
+    <div>
     <div className = {style.container}>
 
     
@@ -155,6 +158,9 @@ export const Profile = () => {
           <CreateProduct />
         </div>
       )}
+      <div className='footer'> <Footer/></div>
+
+    </div>
     </div>
   );
 };

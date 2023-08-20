@@ -6,6 +6,8 @@ import { useState,useEffect } from 'react';
 import axios from 'axios'
 export const Navbar = ()=>{
   const [loggedIn, setLoggedIn] = useState(false);
+  const [contactClicked,setcontactClicked] = useState(false)
+ 
 
   const handleSubmit  = ()=>{
 
@@ -16,8 +18,9 @@ export const Navbar = ()=>{
   const handleInputChange= ()=>{
 
   }
-
+  
   useEffect(() => {
+
     const token = localStorage.getItem('token');
     console.log("rendering");
     if (!token) {
@@ -64,7 +67,7 @@ export const Navbar = ()=>{
         <li><a href="/" >Home</a></li>          
         <li><a href="/products">PRODUCTS</a></li>          
         <li><a href="/">ABOUT</a></li>          
-        <li><a href="/">CONTACT</a></li>          
+        <li><a  href="/contact">CONTACT</a></li>          
         <li><a href="/cart"><img className='cart' src={cart} alt="CART "/></a></li>    
         {loggedIn?(
           <li><a href="/profile"><img className='regist'  src={registerLogo} alt="register"/></a></li>

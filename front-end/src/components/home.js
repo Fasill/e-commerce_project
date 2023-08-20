@@ -3,18 +3,21 @@ import style from './assets/styles/allproducts_side_view.module.css';
 import { Navbar } from "./navbar.js"
 import svg from './assets/images/underline.svg'
 import {Footer} from './footer.js'
+import { Contact } from './contact';
 import arrow from './assets/images/arrow.svg'
 import girls from './assets/images/girls.svg'
 import BackgroundSVG from './assets/images/HomeB.svg'
 import {AllProducts} from './productComponents/allProducts_slide_side.js'
 import './assets/styles/Home.css'
+import { useState,useEffect } from 'react'
+
 export const Home = ()=>{
+  
   return(
-    <div className={style.headers}>
+
+  <div className={style.headers}>
       <div className={style.allhome}>
-        {/* <div className={style.navbar}>
-          <Navbar />
-        </div> */}
+         
          <div className="background-container">
         <img src={BackgroundSVG} alt='background_img' className='background_img' />
       </div>     
@@ -85,5 +88,6 @@ export const Home = ()=>{
   </div>
     </div>
   </div>
+  
   )
 }

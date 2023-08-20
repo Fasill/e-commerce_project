@@ -83,7 +83,7 @@ export const Footer = ()=>{
 
           </ul>
           <div>
-         <p> &copy; 2023 Your E-Shop Name. All rights reserved.</p>
+         <p> &copy; 2023 E-SHOP . All rights reserved.</p>
           </div>
       </div>
       {' '}
