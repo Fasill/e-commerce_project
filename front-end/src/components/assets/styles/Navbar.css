@@ -48,15 +48,17 @@ nav ul li a.active:before {
 }
 .search-bar {
   display: flex;
+  /* gap:1rem; */
   /* align-items: center; */
 }
 
 .search-input {
   background-color: transparent;
   border: none;
-  color: #ffffff; 
+  color: #000000; 
   padding: 9px;
-  padding-right: 4rem;
+  /* margin-right:1rem; */
+  /* padding-right: 4rem; */
   /* border: 1px solid #ccc; */
   border-radius: 50px;
   margin-top: -0.25rem;
@@ -65,6 +67,18 @@ nav ul li a.active:before {
   outline: none;
   caret-color: rgb(87, 79, 79);
   transition: background-color 0.4s;
+}
+.search-bu {
+  /* padding: 1rem; */
+  /* /* background-color: red; */
+  background-color: rgba(0, 0, 0, 0.02);
+  border: none;
+  /* width: 1rem; */
+  /* background-color: none; */
+
+}
+.search-bu img{
+  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);  */
 }
 
 .search-input:hover{

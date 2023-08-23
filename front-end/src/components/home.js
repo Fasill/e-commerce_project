@@ -32,7 +32,7 @@ export const Home = ()=>{
             hard work gains success. Greatness will come.
         </p>
         <div class="cta-btns">
-          <a href="/" class="primary-cta"> <span>Explore Now</span>  <img src={arrow} alt='arrow' /></a>
+          <a href="/products" class="primary-cta"> <span>Explore Now</span>  <img src={arrow} alt='arrow' /></a>
         </div>
         
       </div>
@@ -67,7 +67,7 @@ export const Home = ()=>{
             off only this friday and get special gift
         </h1>
         <div className={style.cta_btns}>
-          <a href="/" class="primary-cta"> <span>Explore Now</span>  <img src={arrow} alt='arrow' /></a>
+          <a href="/products" class="primary-cta"> <span>Explore Now</span>  <img src={arrow} alt='arrow' /></a>
         </div>
         
       </div>

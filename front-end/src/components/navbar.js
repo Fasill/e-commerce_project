@@ -1,22 +1,29 @@
 import './assets/styles/Navbar.css';
 import logo from './assets/images/logo.svg'
+import magnifier from './assets/images/magnifier.svg'
 import cart from './assets/images/cart.svg'
 import registerLogo from './assets/images/register.svg'
 import { useState,useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 export const Navbar = ()=>{
+  const goto = useNavigate()
   const [loggedIn, setLoggedIn] = useState(false);
   const [contactClicked,setcontactClicked] = useState(false)
- 
+  const [inputValue,setInputValue] = useState("")
 
-  const handleSubmit  = ()=>{
+  const handleInputChange  = (event)=>{
+    setInputValue(event.target.value)
+
 
   }
-  const searchQuery = ()=>{
-
+  const navigate = ()=>{
+    goto("/search")
   }
-  const handleInputChange= ()=>{
+  const handleSubmit= ()=>{
 
+    localStorage.setItem('value',inputValue)
+    setInputValue('')
   }
   
   useEffect(() => {
@@ -53,16 +60,20 @@ export const Navbar = ()=>{
     <nav>
       <ul>
       <li >
-        <form onSubmit={handleSubmit} className="search-bar">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleInputChange}
-            placeholder= "search products" 
-            className="search-input"
-            
-          />
-        </form>
+      <form onSubmit={handleSubmit} className="search-bar">
+      <div className="input-with-image">
+        <input
+          type="text"
+          placeholder="Search products"
+          className="search-input"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <button type="submit" onClick={navigate} className="search-bu">
+          <img src={magnifier} alt="Magnifier Icon" />
+        </button>
+      </div>
+    </form>
       </li>
         <li><a href="/" >Home</a></li>          
         <li><a href="/products">PRODUCTS</a></li>          

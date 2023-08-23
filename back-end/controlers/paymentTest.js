@@ -29,17 +29,16 @@ export const payHandler = async (req ,res) => {
     const response = await chapa.initialize({
       first_name: first_name,
       last_name: last_name,
-      email: email,
       currency: 'ETB',
       amount: amount,
       tx_ref: tx_ref,
       callback_url: 'https://example.com/',
       return_url: 'https://example.com/',
-      customization: {
-        title: 'Test Title',
-        description: 'Test Description',
-      },
-    });
+      // customization: {
+      //   title: 'Test Title',
+      //   description: 'Test Description',
+      // },
+    },{ autoTx_ref: true },);
 
     res.status(200).json({ PaymentURL: response.data.checkout_url });
   } catch (error) {

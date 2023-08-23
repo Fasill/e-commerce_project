@@ -6,7 +6,7 @@ import { Customer,Seller} from './components/additionalInfo.js'
 import { Products } from './components/products.js';
 import { MyProducts } from './components/myProducts.js';
 import { Contact } from './components/contact.js';
-
+import {Search} from './components/searchedFromNavBar.js'
 import { Profile} from './components/profile.js';
 
 import { Cart} from './components/cart.js';
@@ -29,6 +29,7 @@ function App() {
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/cart" element={<Cart/>} />
           <Route path="/contact" element={<Contact/>} />
+          <Route path="/search" element={<Search/>} />
           
 
         </Routes>

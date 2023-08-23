@@ -1,0 +1,10 @@
+.productsMain{
+  /* background-color: blueviolet; */
+  /* min-height:1rem ; */
+}
+.wrapper{
+  height: auto;
+}
+.Footer{
+  z-index: 9999;
+}
