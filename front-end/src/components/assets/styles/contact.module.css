@@ -31,6 +31,9 @@
   /* height: rem; */
 
 }
+
+
+
 .card1,.card2,.card3{
   /* background-color: rgb(43, 226, 153); */
   height:17rem;
@@ -123,3 +126,15 @@ grid-gap:rem
 }
 
 /* .bttn3 */
+
+@media (max-width: 977px) {
+  .cards{
+    
+    display: grid;
+    grid-gap:2rem;
+  }
+  .card2{
+margin-top: 0rem;
+
+  }
+}
