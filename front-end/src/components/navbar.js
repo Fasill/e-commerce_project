@@ -50,13 +50,9 @@ export const Navbar = ()=>{
         });
     }
   }, []);
-
-
-
   return(    
-  <div>
   <header>
-    <a href="/"><img src={logo} alt="E-SHOP logo"/></a>
+    <a className="headerLogo" href="/"><img src={logo} alt="E-SHOP logo"/></a>
     <nav>
       <ul>
       <li >
@@ -83,14 +79,8 @@ export const Navbar = ()=>{
         {loggedIn?(
           <li><a href="/profile"><img className='regist'  src={registerLogo} alt="register"/></a></li>
         ):<li><a href="/signin"><img className='regist'  src={registerLogo} alt="register"/></a></li>}      
-         
-
-
-
-
       </ul>
     </nav>
   </header>
-  </div>
   )
 }
