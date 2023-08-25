@@ -83,7 +83,7 @@ useEffect(() => {
       <div>
         {/* Additional content */}
       </div>
-      <div clasName='footers'> <Footer/></div>
+      <div className='footer'> <Footer/></div>
      
 
     </div>
