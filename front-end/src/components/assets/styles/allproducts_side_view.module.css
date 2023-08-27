@@ -5,13 +5,11 @@
   overflow-y: auto;
   overflow-x: auto;
   perspective: 20px;
-  /* display: grid; */
-  /* grid-gap: 10rem; */
+
 
 } 
 
  .headers{ 
-  /* position: relative; */
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -46,24 +44,45 @@
 
 }
 
+.fog{
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
 
+  /* background-color: #ffb0ab; */
+}
 .left{
   box-shadow: -30px 25px 50px 50px rgba(255, 255, 255, 1.5);
 
-  margin-left: 82rem;
+  /* margin-left: 82rem; */
   background-color: rgb(255, 255, 255);
-
+  align-self: right;
   z-index: 999; 
 
   padding: 1rem;
-  position: absolute;
   margin-right: 5rem;
-  /* width: 74rem; */
+  width: 1rem;
   height: 350px; 
   margin-top: 4rem;
 
 }
 
+@media (max-width: 400px) {
+
+  .left{
+    display: none;
+
+  }
+} 
+@media (max-width: 877px) {
+
+  .left{
+    box-shadow: 10px 25px 50px 50px rgba(255, 255, 255, 1.5);
+
+
+  }
+} 
 .products{
   margin-left: 0rem;
   margin-right: 5rem;
@@ -98,12 +117,14 @@
 .side_title{
   /* margin-top: 1rem; */
   display: grid;
+  padding-left:5rem ;
   /* gap: -5px; */
 }
 .products_tttle{
+  text-align: left;
   font-size: 2rem;
   /* text-align: left; */
-  margin-right: 39rem;
+  /* margin-right: 39rem; */
   margin-top: 3rem;
   font-weight: bold;
   /* background-attachment: fixed; */
@@ -111,19 +132,24 @@
 }
 .products_tttle_underline{
   /* margin-top: 1rem; */
-  margin-left: 19rem;
+  /* margin-left: 19rem; */
 }
 .bigUnderline{
-  align-items: center;
-  position: absolute;
-  margin: 0 auto;
-  width: 50rem;
+ 
+
+ /* margin-left: 25%; */
+ position: absolute;
+ left: 50%;
+ transform: translateX(-50%);
+ width: 80%; /* Adjust the width using a relative unit like percentage */
+ max-width: 70rem; /* Set a maximum width if needed */
  padding: 1px;
- background-color: rgb(228, 228, 228); 
- margin-left: 25%;
+ background-color: rgb(208, 208, 208); 
+
  margin-top: 1.5rem;
 
 }
+
 .navbar{
   position: fixed;
   margin-top: 6rem;
@@ -137,16 +163,17 @@
   /* background-color: aqua; */
   width: 40rem;
   align-items: left;
-  margin-left: 8rem;
+  /* margin-left: 8rem; */
+  padding-left: 4rem;
   margin-top: 2rem;
-
+  /* background-color: aqua; */
   display: grid;
   gap: 2rem;
   align-items: left;
 }
 .cta_btns{
   margin-top: 1rem;
-  margin-left: -30.2rem;
+  margin-left: -25rem;
   scale: 1.2;
   /* align-items: left; */
 }
@@ -162,6 +189,7 @@
   color: white;
   font-weight: bold;
 }
+
 .subhead{
   font-size: 55px;
   font-weight: bold;
@@ -177,3 +205,16 @@
   color: #A51910;
 }
 
+@media (max-width: 584px) {
+
+  .const_img_Title h1{
+    /* box-shadow: 10px 25px 50px 50px rgba(255, 255, 255, 1.5); */
+    font-size: 25px;
+
+
+  }
+} 
+
+.sideTraverse2{
+  margin-top: 5rem;
+}

@@ -10,6 +10,7 @@ import BackgroundSVG from './assets/images/HomeB.svg'
 import {AllProducts} from './productComponents/allProducts_slide_side.js'
 import './assets/styles/Home.css'
 import { useState,useEffect } from 'react'
+import { Parallax,ParallaxLayer } from '@react-spring/parallax';
 
 export const Home = ()=>{
   
@@ -43,13 +44,16 @@ export const Home = ()=>{
   
   </main>
     <div className = {style.sideTraverse}>
-      <div className={style.bigUnderline}></div>
+      <div className={style.bigUnderline}>{" "}</div>
       <div className={style.side_title}>
-      <h1 className={style.products_tttle}>Featured Products</h1> 
-     <img className={style.products_tttle_underline}  src={svg}/>
+          <h1 className={style.products_tttle}>Featured Products</h1> 
+          <img className={style.products_tttle_underline}  src={svg}/>
       </div>
-        <div className = {style.left}></div>
-
+      <div 
+        className={style.fog}
+      >
+        <div className = {style.left}>{" "}</div>
+      </div>
       <AllProducts className = {style.item}/>
 
       {/* </div> */}
@@ -64,24 +68,29 @@ export const Home = ()=>{
         <h1 className={style.subhead}>
           
         <h1>30% </h1>
-            off only this friday and get special gift
+            off only this <br/>friday and get <br/> special gift
         </h1>
         <div className={style.cta_btns}>
           <a href="/products" class="primary-cta"> <span>Explore Now</span>  <img src={arrow} alt='arrow' /></a>
         </div>
         
       </div>
-    <div className ={` ${style.sideTraverse} ${style.secondSideTraverse}`}>
-      <div className={style.bigUnderline}></div>
+      <div className = {`${style.sideTraverse} ${style.sideTraverse2}`}>
+      <div className={style.bigUnderline}>{" "}</div>
       <div className={style.side_title}>
-      <h1 className={style.products_tttle}>Latest Products</h1> 
-     <img className={style.products_tttle_underline}  src={svg}/>
+          <h1 className={style.products_tttle}>Latest Products
+</h1> 
+          <img className={style.products_tttle_underline}  src={svg}/>
       </div>
-        <div className = {style.left}></div>
-
+      <div 
+        className={style.fog}
+      >
+        <div className = {style.left}>{" "}</div>
+      </div>
       <AllProducts className = {style.item}/>
 
       {/* </div> */}
+  
       <Footer/>
 
       {/* <div className={style.footer}></div> */}
