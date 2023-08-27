@@ -1,36 +1,56 @@
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
 main{
   display: flex;
   gap: 8em;
   margin-top:6rem;
-  /* background-color: #A51910; */
   position: relative;  
 }
+
+
 .left-col{
-  margin-top: 8rem;
-  
+
+  margin-top: 10rem;
+  /* display: grid; */
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  text-align: left;
+
+  /* background-color: red; */
+  padding-left: 5rem;
+
 
 }
 .left-col h1{
+    font-family: 'Poppins', sans-serif;
     text-align:left;
     font-size:41px;
-    font-weight: normal;
-    margin: 0;
-    margin-left:7rem;
+    font-weight: bold;
   
 }
+
+@media (max-width: 999px) {
+    .left-col{
+      margin-top: 3rem;
+
+
+    }
+} 
 .left-col p{
-  margin-left:7rem;
+
+  font-family: 'Poppins', sans-serif;
+
   text-align:left;
   font-size:17px;
 
 
 }
 .cta-btns {
-  margin: 5em 0;
-  margin-left:-12rem;
 
-  /* display: flex; */
-  gap: 2em;
+  
   
 }
 .primary-cta{
@@ -46,16 +66,6 @@ main{
   margin-right:5rem;
 }
 
-
-.background-container {
-  position: absolute;
-  top: -4rem;
-  left: -1rem;
-  
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
 
 
 

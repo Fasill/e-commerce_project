@@ -7,11 +7,14 @@ import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import listicon from './assets/images/list.svg'
-import { DropDown } from './dropDown';
-export const Navbar = ()=>{
+
+
+export const DropDown  = ({dropClicked})=>{
+
+
+
   const goto = useNavigate()
   const [loggedIn, setLoggedIn] = useState(false);
-  const [dropClicked,setDropClicked] = useState(false)
   const [inputValue,setInputValue] = useState("")
 
   const handleInputChange  = (event)=>{
@@ -27,9 +30,7 @@ export const Navbar = ()=>{
     localStorage.setItem('value',inputValue)
     setInputValue('')
   }
-  const drop = ()=>{
-    setDropClicked(!dropClicked)
-  }
+  
   useEffect(() => {
 
     const token = localStorage.getItem('token');
@@ -54,25 +55,25 @@ export const Navbar = ()=>{
         });
     }
   }, []);
-  return(  
-     <div
-      className="all"
-     >
-  <header>
-    <a className="headerLogo" href="/"><img src={logo} alt="E-SHOP logo"/></a>
-    <nav className="defaultNav">
+
+
+const isDrop =dropClicked ?"dropNav2":"dontdrop"
+
+return(
+  <div className="all2">
+<nav className={isDrop}>
       <ul>
       <li >
-      <form onSubmit={handleSubmit} className="search-bar">
+      <form onSubmit={handleSubmit} className="search-bar2">
       <div className="input-with-image">
         <input
           type="text"
           placeholder="Search products"
-          className="search-input"
+          className="search-input2"
           value={inputValue}
           onChange={handleInputChange}
         />
-        <button type="submit" onClick={navigate} className="search-bu">
+        <button type="submit" onClick={navigate} className="search-bu2">
           <img src={magnifier} alt="Magnifier Icon" />
         </button>
       </div>
@@ -88,18 +89,5 @@ export const Navbar = ()=>{
         ):<li><a href="/signin"><img className='regist'  src={registerLogo} alt="register"/></a></li>}      
       </ul>
     </nav>
-    {/* <div
-      className="dropNav"
-    > */}
-      <a onClick = {drop}  className="dropdownlist"><img  src = {listicon} /></a>
-      {/* <DropDown dropClicked = {dropClicked} /> */}
-
-  
-
-    {/* </div> */}
-
-  </header>
-
-  </div>
-  )
-}
+    </div>
+)}
