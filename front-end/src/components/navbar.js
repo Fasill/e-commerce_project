@@ -13,11 +13,15 @@ export const Navbar = ()=>{
   const [loggedIn, setLoggedIn] = useState(false);
   const [dropClicked,setDropClicked] = useState(false)
   const [inputValue,setInputValue] = useState("")
-
+  const [active,setActive] = useState("")
   const handleInputChange  = (event)=>{
     setInputValue(event.target.value)
 
 
+
+  }
+  const navClicked = (val)=>{
+    localStorage.setItem("active",val)
   }
   const navigate = ()=>{
     goto("/search")
@@ -30,6 +34,13 @@ export const Navbar = ()=>{
   const drop = ()=>{
     setDropClicked(!dropClicked)
   }
+  useEffect(()=>{
+
+    const t = localStorage.getItem("active")
+
+    setActive(t)
+
+  },[])
   useEffect(() => {
 
     const token = localStorage.getItem('token');
@@ -78,14 +89,42 @@ export const Navbar = ()=>{
       </div>
     </form>
       </li>
-        <li><a href="/" >Home</a></li>          
-        <li><a href="/products">PRODUCTS</a></li>          
-        <li><a href="/">ABOUT</a></li>          
-        <li><a  href="/contact">CONTACT</a></li>          
-        <li><a href="/cart"><img className='cart' src={cart} alt="CART "/></a></li>    
-        {loggedIn?(
-          <li><a href="/profile"><img className='regist'  src={registerLogo} alt="register"/></a></li>
-        ):<li><a href="/signin"><img className='regist'  src={registerLogo} alt="register"/></a></li>}      
+        <li><a 
+        className={active === "home" ? "home1" : "n"}
+        onClick={()=>navClicked("home")}
+        href="/" >Home</a></li>          
+        <li><a 
+        className={active === "products" ? "products1" : "n"}
+
+        onClick={()=>navClicked("products")}
+
+        href="/products">PRODUCTS</a></li>          
+        <li><a 
+        onClick={()=>navClicked("about")}
+        className={active === "about" ? "about1" : "n"}
+
+        
+        href="/">ABOUT</a></li>          
+        <li><a  
+        onClick={()=>navClicked("contact")}
+        className={active === "contact" ? "contact1" : "n"}
+
+        href="/contact">CONTACT</a></li>          
+        <li><a 
+        onClick={()=>navClicked("cart")}
+        className={active === "cart" ? "cart1" : "n"}
+
+
+        href="/cart"><img className='cart' src={cart} alt="CART "/></a></li>    
+        {/* {loggedIn?( */}
+          <li><a
+        onClick={()=>navClicked("profile")}
+        className={active === "profile" ? "profile1" : "n"}
+
+
+          href={loggedIn?`/profile`:`/signin`}><img className='regist'  src={registerLogo} alt="register"/></a></li>
+        {/* // ):<li><a  */}
+        {/* // href="/signin"><img className='regist'  src={registerLogo} alt="register"/></a></li>}       */}
       </ul>
     </nav>
     {/* <div

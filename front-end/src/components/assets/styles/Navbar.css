@@ -31,13 +31,23 @@ header{
 li{
   list-style:  none;
 }
-
-.defaultNav ul li a{
-  text-decoration: none;
-  color:black;
-  text-transform: uppercase;
+.n{  text-decoration: none;
   font-size: 13px;
+
+
+  color:rgb(0, 0, 0);}
+.home1,.products1,.about1,.contact1{ 
+  text-decoration: none;
+  font-size: 13px;
+
+
+  color:rgb(230, 89, 89);}
+
+.cart1 img ,.profile1n img{
+  fill: aquamarine; 
+
 }
+
 .defaultNav ul li a.active:before {
   position: absolute;
   content: "";
@@ -77,6 +87,7 @@ li{
   scale: 1.2;
 }
 
+
 .dropdownlist{
   scale: 1.5;
 }
@@ -102,5 +113,7 @@ li{
   justify-content: end;
   align-items: center;
 }
+
+
 
 
