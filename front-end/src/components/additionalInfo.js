@@ -43,7 +43,7 @@ export const Customer = ()=>{
       if (!token) {
         navigate('/signup');
       } else {
-        axios.post('http://localhost:8080/verify', {
+        axios.post('https://book-test-itcl.onrender.com/verify', {
           headers: {
             token:token
           }
@@ -67,7 +67,7 @@ export const Customer = ()=>{
     data.token = token
     console.log(data)
     axios
-    .post('http://localhost:8080/signup/payment',data)
+    .post('https://book-test-itcl.onrender.com/signup/payment',data)
     .then((res)=>{
       console.log(res)
 

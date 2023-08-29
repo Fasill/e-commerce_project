@@ -66,7 +66,7 @@ const onSubmit = async (data) => {
     // Append the token
     formData.append('token', token);
 
-    const response = await axios.post('http://localhost:8080/products/create', formData, {
+    const response = await axios.post('https://book-test-itcl.onrender.com/products/create', formData, {
       headers: {
         'Content-Type': 'multipart/form-data' // Set appropriate content type for file upload
       }

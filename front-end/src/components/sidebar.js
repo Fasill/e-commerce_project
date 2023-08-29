@@ -9,7 +9,7 @@ export const Sidebar = () => {
     console.log(value)
     localStorage.setItem("value",value)
     axios
-      .post("http://localhost:8080/products",{value:value})
+      .post("https://book-test-itcl.onrender.com/products",{value:value})
       .then(res=>{
         console.log(res.data)
 

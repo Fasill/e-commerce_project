@@ -58,7 +58,7 @@ export const Cart = () => {
     console.log(phoneNumber)
 
     axios
-    .post(`http://localhost:8080/products/pay`,  {amount:total,
+    .post(`https://book-test-itcl.onrender.com/products/pay`,  {amount:total,
                                                  token:token,
                                                  phoneNumber:phoneNumber
                                                 })
@@ -81,7 +81,7 @@ export const Cart = () => {
     const productId = product._id;
 
     axios
-      .delete(`http://localhost:8080/products/cart/remove/${productId}/${token}`)
+      .delete(`https://book-test-itcl.onrender.com/products/cart/remove/${productId}/${token}`)
       .then((response) => {
         console.log(response);
         fetchCart();
