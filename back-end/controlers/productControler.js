@@ -1,5 +1,6 @@
 import ProductSchema from '../model/products.js'
 import personSchema from "../model/person.js";
+import response  from '../model/Restes.js';
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
 
@@ -233,7 +234,11 @@ export const payment = async(req,res)=>{
   }
 
 }
-export const webhook = (req,res) =>{
-  res.status.json({rrrrr:"rrrrrr",message:req.body})
+export const webhook = async(req,res) =>{
+  res.status(200).json({rrrrr:"rrrrrr",message:req.body})
+  // try{
+  //   new response(response = req.body)
+  //   await response.save()
+  // }catch(e){res.status}
 }
 
