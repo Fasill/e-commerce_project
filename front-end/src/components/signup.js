@@ -45,7 +45,7 @@ export const Signup = ()=>{
     data.agreedToTerms = true
     console.log(data)
     axios
-    .post('http://localhost:8080/signup',data)
+    .post('https://book-test-itcl.onrender.com/signup',data)
     .then((res)=>{
       if (data.type ==="customer"){
         navigate('/signup/customer');

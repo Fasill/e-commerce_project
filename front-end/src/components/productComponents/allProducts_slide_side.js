@@ -19,7 +19,7 @@ export const AllProducts = () => {
     };
     console.log(cartItem)
 
-    axios.post('http://localhost:8080/products/cart/add', cartItem)
+    axios.post('https://book-test-itcl.onrender.com/products/cart/add', cartItem)
       .then(res => {
         console.log(res.data)
         // Handle the response if needed
@@ -33,7 +33,7 @@ export const AllProducts = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:8080/products')
+    axios.get('https://book-test-itcl.onrender.com/products')
       .then(res => {
         console.log(res.data.allinfo);
         setAllProducts(res.data.allinfo);

@@ -55,10 +55,10 @@ export const Cart = () => {
     }
     
     console.log("sending")
-    console.log(phoneNumber)
+    console.log(token)
 
     axios
-    .post(`http://localhost:8080/products/pay`,  {amount:total,
+    .post(`https://book-test-itcl.onrender.com/products/pay`,  {amount:total,
                                                  token:token,
                                                  phoneNumber:phoneNumber
                                                 })
@@ -81,7 +81,7 @@ export const Cart = () => {
     const productId = product._id;
 
     axios
-      .delete(`http://localhost:8080/products/cart/remove/${productId}/${token}`)
+      .delete(`https://book-test-itcl.onrender.com/products/cart/remove/${productId}/${token}`)
       .then((response) => {
         console.log(response);
         fetchCart();
@@ -93,7 +93,7 @@ export const Cart = () => {
 
   const fetchCart = () => {
     axios
-      .post('http://localhost:8080/products/cart', { token: token })
+      .post('https://book-test-itcl.onrender.com/products/cart', { token: token })
       .then((res) => {
         console.log("getting carts")
         console.log(res.data.cart)

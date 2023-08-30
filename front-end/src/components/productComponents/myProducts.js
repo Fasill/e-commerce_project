@@ -18,7 +18,7 @@ export const MyProductTravese = () => {
     };
     console.log(cartItem)
 
-    axios.post('http://localhost:8080/products/cart/add', cartItem)
+    axios.post('https://book-test-itcl.onrender.com/products/cart/add', cartItem)
       .then(res => {
         console.log(res.data)
         // Handle the response if needed
@@ -32,7 +32,7 @@ export const MyProductTravese = () => {
 
 
   useEffect(() => {
-    axios.post('http://localhost:8080/products/myproducts',{token:token})
+    axios.post('https://book-test-itcl.onrender.com/products/myproducts',{token:token})
       .then(res => {
         console.log(res.data.allinfo);
         setAllProducts(res.data.allinfo);

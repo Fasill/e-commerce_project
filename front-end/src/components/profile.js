@@ -41,8 +41,8 @@ export const Profile = () => {
         navigate('/signup');
       } else {
         try {
-          const response1 = axios.post('http://localhost:8080/verify', { token });
-          const response2 = axios.post('http://localhost:8080/profile', { token});
+          const response1 = axios.post('https://book-test-itcl.onrender.com/verify', { token });
+          const response2 = axios.post('https://book-test-itcl.onrender.com/profile', { token});
           const [result1, result2] = await Promise.all([response1, response2]);
           console.log(result1.data); // Response from the first endpoint
           console.log(result2.data); // Response from the second endpoint

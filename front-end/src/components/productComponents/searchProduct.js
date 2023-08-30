@@ -18,7 +18,7 @@ export const SearchedProducts = () => {
     };
     console.log(cartItem)
 
-    axios.post('http://localhost:8080/products/cart/add', cartItem)
+    axios.post('https://book-test-itcl.onrender.com/products/cart/add', cartItem)
       .then(res => {
         console.log(res.data)
         // Handle the response if needed
@@ -36,7 +36,7 @@ export const SearchedProducts = () => {
     const path = localStorage.getItem('path')
 
     
-    axios.post('http://localhost:8080/products',{value})
+    axios.post('https://book-test-itcl.onrender.com/products',{value})
       .then(res => {
         console.log(token);
         setAllProducts(res.data.bytag);

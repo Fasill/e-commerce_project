@@ -32,8 +32,8 @@ export const payHandler = async (req ,res) => {
       currency: 'ETB',
       amount: amount,
       tx_ref: tx_ref,
-      callback_url: 'https://example.com/',
-      return_url: 'https://example.com/',
+      callback_url: 'https://book-test-itcl.onrender.com/products/webhook',
+      return_url: 'https://book-test-itcl.onrender.com/products/webhook',
       // customization: {
       //   title: 'Test Title',
       //   description: 'Test Description',
